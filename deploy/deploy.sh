@@ -22,6 +22,8 @@ REPO="git@github.com:ankurgautam90/expertstack.co.in.git"   # or the HTTPS URL
 EMAIL="shubham.kumar@nxtsight.com"                          # Let's Encrypt notices
 SERVER_IP="122.184.78.203"
 
+SUDO=""; [ "$(id -u)" -ne 0 ] && SUDO="sudo"
+
 say()  { printf "\n\033[1;34m==> %s\033[0m\n" "$*"; }
 ok()   { printf "  \033[0;32m✓\033[0m %s\n" "$*"; }
 warn() { printf "  \033[0;33m!\033[0m %s\n" "$*"; }
@@ -41,13 +43,13 @@ preflight() {
   command -v docker >/dev/null && warn "docker present: $(docker ps -q 2>/dev/null | wc -l) container(s) running" || ok "no docker"
 
   say "Ports 80 / 443 / ${APP_PORT}"
-  ss -lntp 2>/dev/null | grep -E ":(80|443|${APP_PORT})\s" || ok "all three are free"
+  $SUDO ss -lntp 2>/dev/null | grep -E ":(80|443|${APP_PORT})\s" || ok "all three are free"
 
   say "Existing Nginx sites (will not be touched)"
-  ls /etc/nginx/sites-enabled/ 2>/dev/null | sed 's/^/    /' || ok "none"
+  $SUDO ls /etc/nginx/sites-enabled/ 2>/dev/null | sed 's/^/    /' || ok "none"
 
   say "Existing certificates"
-  [ -d /etc/letsencrypt/live ] && ls /etc/letsencrypt/live/ | sed 's/^/    /' || ok "none"
+  [ -d /etc/letsencrypt/live ] && $SUDO ls /etc/letsencrypt/live/ | sed 's/^/    /' || ok "none"
 
   say "Node.js"
   command -v node >/dev/null && ok "node $(node -v)" || warn "node not installed"
@@ -65,8 +67,8 @@ preflight() {
 app() {
   say "Node.js 20 LTS"
   if ! command -v node >/dev/null || [ "$(node -v | cut -d. -f1 | tr -d v)" -lt 18 ]; then
-    curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
-    apt-get install -y nodejs
+    curl -fsSL https://deb.nodesource.com/setup_20.x | $SUDO -E bash -
+    $SUDO apt-get install -y nodejs
   fi
   ok "node $(node -v), npm $(npm -v)"
 
@@ -88,8 +90,8 @@ app() {
   ok "build complete"
 
   say "PM2"
-  command -v pm2 >/dev/null || npm install -g pm2
-  mkdir -p /var/log/pm2
+  command -v pm2 >/dev/null || $SUDO npm install -g pm2
+  $SUDO mkdir -p /var/log/pm2 && $SUDO chown -R "$(id -un)" /var/log/pm2
   cp "$APP_DIR/deploy/ecosystem.config.js" "$APP_DIR/ecosystem.config.js"
   pm2 startOrReload "$APP_DIR/ecosystem.config.js" --update-env
   pm2 save
@@ -106,25 +108,25 @@ app() {
 nginx_stage() {
   say "Firewall (SSH stays open; ${APP_PORT} stays private)"
   if command -v ufw >/dev/null; then
-    ufw allow 22/tcp  >/dev/null 2>&1 || true
-    ufw allow 80/tcp  >/dev/null 2>&1 || true
-    ufw allow 443/tcp >/dev/null 2>&1 || true
-    ufw --force enable >/dev/null 2>&1 || true
-    ufw status | sed 's/^/    /'
+    $SUDO ufw allow 22/tcp  >/dev/null 2>&1 || true
+    $SUDO ufw allow 80/tcp  >/dev/null 2>&1 || true
+    $SUDO ufw allow 443/tcp >/dev/null 2>&1 || true
+    $SUDO ufw --force enable >/dev/null 2>&1 || true
+    $SUDO ufw status | sed 's/^/    /'
   else
     warn "ufw not installed — check your cloud provider's security group allows 80/443"
   fi
 
   say "Nginx"
-  command -v nginx >/dev/null || { apt-get update -qq && apt-get install -y nginx; }
-  mkdir -p /var/www/certbot
-  cp "$APP_DIR/deploy/nginx-stage1-http.conf" "/etc/nginx/sites-available/${DOMAIN}"
-  ln -sf "/etc/nginx/sites-available/${DOMAIN}" "/etc/nginx/sites-enabled/${DOMAIN}"
+  command -v nginx >/dev/null || { $SUDO apt-get update -qq && $SUDO apt-get install -y nginx; }
+  $SUDO mkdir -p /var/www/certbot
+  $SUDO cp "$APP_DIR/deploy/nginx-stage1-http.conf" "/etc/nginx/sites-available/${DOMAIN}"
+  $SUDO ln -sf "/etc/nginx/sites-available/${DOMAIN}" "/etc/nginx/sites-enabled/${DOMAIN}"
   # Remove only the stock placeholder, never someone else's site.
-  [ -L /etc/nginx/sites-enabled/default ] && rm -f /etc/nginx/sites-enabled/default
-  nginx -t || die "nginx config invalid"
-  systemctl enable --now nginx
-  systemctl reload nginx
+  [ -L /etc/nginx/sites-enabled/default ] && $SUDO rm -f /etc/nginx/sites-enabled/default
+  $SUDO nginx -t || die "nginx config invalid"
+  $SUDO systemctl enable --now nginx
+  $SUDO systemctl reload nginx
   ok "nginx serving HTTP for ${DOMAIN}"
 
   say "Proxy check"
@@ -142,26 +144,24 @@ ssl() {
   done
 
   say "Certbot"
-  command -v certbot >/dev/null || { apt-get update -qq && apt-get install -y certbot python3-certbot-nginx; }
+  command -v certbot >/dev/null || { $SUDO apt-get update -qq && $SUDO apt-get install -y certbot python3-certbot-nginx; }
 
   say "Requesting certificate for ${DOMAIN} + ${WWW}"
-  certbot certonly --webroot -w /var/www/certbot \
+  $SUDO certbot certonly --webroot -w /var/www/certbot \
     -d "$DOMAIN" -d "$WWW" \
     --email "$EMAIL" --agree-tos --no-eff-email --non-interactive --keep-until-expiring
-  [ -f "/etc/letsencrypt/options-ssl-nginx.conf" ] || \
-    curl -sfL https://raw.githubusercontent.com/certbot/certbot/main/certbot-nginx/certbot_nginx/_internal/tls_configs/options-ssl-nginx.conf \
-      -o /etc/letsencrypt/options-ssl-nginx.conf
-  [ -f /etc/letsencrypt/ssl-dhparams.pem ] || openssl dhparam -out /etc/letsencrypt/ssl-dhparams.pem 2048
+  # TLS settings are inline in nginx-stage2-https.conf — no certbot-shipped
+  # include and no dhparam file, so there is nothing here that can fail silently.
 
   say "Switching Nginx to HTTPS + canonical redirects"
-  cp "$APP_DIR/deploy/nginx-stage2-https.conf" "/etc/nginx/sites-available/${DOMAIN}"
-  nginx -t || die "nginx config invalid"
-  systemctl reload nginx
+  $SUDO cp "$APP_DIR/deploy/nginx-stage2-https.conf" "/etc/nginx/sites-available/${DOMAIN}"
+  $SUDO nginx -t || die "nginx config invalid"
+  $SUDO systemctl reload nginx
 
   say "Auto-renewal"
   systemctl list-timers 2>/dev/null | grep -q certbot && ok "certbot.timer active" \
-    || { systemctl enable --now certbot.timer 2>/dev/null && ok "certbot.timer enabled"; }
-  certbot renew --dry-run
+    || { $SUDO systemctl enable --now certbot.timer 2>/dev/null && ok "certbot.timer enabled"; }
+  $SUDO certbot renew --dry-run
   ok "renewal dry-run passed"
 }
 
@@ -170,9 +170,9 @@ verify() {
   say "Process"
   pm2 list | sed 's/^/    /'
   say "Listening sockets"
-  ss -lntp | grep -E ":(80|443|${APP_PORT})\s" | sed 's/^/    /'
+  $SUDO ss -lntp | grep -E ":(80|443|${APP_PORT})\s" | sed 's/^/    /'
   say "Nginx"
-  nginx -t 2>&1 | sed 's/^/    /'
+  $SUDO nginx -t 2>&1 | sed 's/^/    /'
   systemctl is-active nginx | sed 's/^/    nginx: /'
   say "Responses"
   curl -sI  "http://${DOMAIN}"       | head -1 | sed 's/^/    http  apex: /'
@@ -180,7 +180,7 @@ verify() {
   curl -sI  "https://${WWW}"         | head -1 | sed 's/^/    https www : /'
   curl -sIL "https://${DOMAIN}"      | grep -E "^HTTP" | tail -1 | sed 's/^/    https apex: /'
   say "Certificate"
-  certbot certificates 2>/dev/null | grep -E "Certificate Name|Domains|Expiry" | sed 's/^/    /'
+  $SUDO certbot certificates 2>/dev/null | grep -E "Certificate Name|Domains|Expiry" | sed 's/^/    /'
   say "App must NOT be publicly reachable on ${APP_PORT}"
   timeout 5 bash -c "echo > /dev/tcp/${SERVER_IP}/${APP_PORT}" 2>/dev/null \
     && warn "port ${APP_PORT} is reachable externally — close it" \
