@@ -6,12 +6,12 @@ import { Icon } from "@/components/icons/Icon";
 import { searchSite } from "@/lib/search";
 
 const SUGGESTIONS = [
-  "Rack Servers",
-  "Network Switches",
-  "Firewalls",
-  "Storage",
-  "Data Center",
-  "AMC & Support",
+  "Cloud",
+  "Application Integration",
+  "Cybersecurity",
+  "Managed Services",
+  "Networking",
+  "Consulting",
 ];
 
 /** Header search: a light overlay panel with instant client-side filtering. */

@@ -1,19 +1,16 @@
-# Expertstack — Enterprise IT Infrastructure Website
+# Expertstack — IT Solutions & Systems Integration
 
-A premium B2B website for an enterprise IT infrastructure and technology solutions
-company, built with **Next.js 14 (App Router)**, **React 18**, **TypeScript** and
-**Tailwind CSS**.
+A B2B website for a technology solutions and systems integration company, built with
+**Next.js 14 (App Router)**, **React 18**, **TypeScript** and **Tailwind CSS**.
 
-The design brief combined two references, used for **structure and UX only** — no
-logos, copy, imagery or code were taken from either:
+**Positioning:** consulting, solution architecture, technology integration,
+implementation, cybersecurity, cloud and managed services. Compute, network,
+security and storage appear as *technology layers* that solutions are built from —
+never as a product catalogue.
 
-| Reference | Used for |
-| --- | --- |
-| Corporate telco-style header (orange.com) | Header architecture: utility strip, sticky bar, shallow two-level mega-menu, right-side search + primary CTA, full-screen mobile drawer |
-| Enterprise IT integrator presentation (binaryglobal.com) | Main UI language: large typography, solution cards, dark technical sections, section rhythm and spacing |
-
-Everything on the page — brand, wordmark, artwork, copy and content model — is
-original to this project.
+The visual design (header, navigation, colours, typography, spacing, cards,
+buttons, animations, footer, responsive behaviour) is unchanged from the approved
+UI. The repositioning was done in content, information architecture and imagery.
 
 ---
 
@@ -22,152 +19,150 @@ original to this project.
 ```bash
 npm install
 npm run dev        # http://localhost:3000
+npm run build      # production build
+npm run lint       # eslint
 ```
 
-```bash
-npm run build && npm start   # production build
-npm run lint                 # eslint
-```
-
-Requires Node 18.18+ (Node 20 LTS recommended).
-
-> **Note:** this project was authored on a machine without registry access, so
-> `npm install` has not been run against it yet. It pins standard, widely-used
-> versions (Next 14.2, React 18.3, Tailwind 3.4) with no exotic dependencies.
+Requires Node 18.18+ (Node 20 LTS recommended). Verified on Node 18.20.8:
+`tsc --noEmit` clean, `next build` clean, 32 static routes generated.
 
 ---
 
-## Project structure
+## Information architecture
 
-```
-src/
-├─ app/
-│  ├─ layout.tsx                  # shell: metadata, fonts, navbar, footer
-│  ├─ page.tsx                    # homepage — composes the 15 sections
-│  ├─ globals.css                 # base layer, blueprint grids, eyebrow rule
-│  ├─ not-found.tsx               # 404 with quick links
-│  ├─ icon.svg, robots.ts, sitemap.ts
-│  ├─ api/enquiry/route.ts        # contact form endpoint (server-side validation)
-│  ├─ solutions/[slug]/page.tsx   # 6 static solution pages
-│  ├─ products/[slug]/page.tsx    # 6 static product pages
-│  ├─ services/[slug]/page.tsx    # 7 static service pages
-│  ├─ industries/[slug]/page.tsx  # 8 static industry pages
-│  └─ company/…                   # about, why-choose-us, partners, case studies, legal
-├─ components/
-│  ├─ layout/     Navbar · MegaMenu · MobileMenu · SearchOverlay · Footer
-│  ├─ home/       Hero · CategoryGrid · CoreSolutions · RackServerSection ·
-│  │              NetworkSection · SecuritySection · DataCenterSection ·
-│  │              ProcessSection · IndustriesSection · WhyChooseUs ·
-│  │              PartnerSection · CaseStudiesSection · AboutSection ·
-│  │              FinalCTA · ContactSection
-│  ├─ cards/      SolutionCard · ProductCard · ServiceCard · IndustryCard · CaseStudyCard
-│  ├─ sections/   DetailPageView · PageBanner · Breadcrumbs · DetailVisual · LegalBody
-│  ├─ forms/      ContactForm
-│  ├─ ui/         Button · Container · SectionHeading · Reveal · Logo
-│  ├─ visuals/    ServerRackVisual · RackServerVisual · NetworkSwitchVisual ·
-│  │              SecurityVisual · DataCenterVisual · PatternVisual
-│  └─ icons/      Icon (single 24×24 line-icon set)
-└─ lib/
-   ├─ site.ts        # brand name, contact details, legal links
-   ├─ navigation.ts  # header mega-menus + footer columns
-   ├─ search.ts      # flat search index derived from navigation
-   ├─ utils.ts
-   └─ data/
-      ├─ home.ts     # categories, core solutions, process, industries, reasons,
-      │              # partner categories, case studies
-      └─ catalog.ts  # 27 detail pages (solutions/products/services/industries)
-```
+| Nav | Route | Notes |
+| --- | --- | --- |
+| Home | `/` | 17-section narrative (see below) |
+| Solutions | `/solutions/[slug]` | 6 solution areas |
+| Services | `/services/[slug]` | 7 lifecycle stages |
+| Industries | `/industries/[slug]` | 8 sectors |
+| Technology | `/technology/[slug]` | 6 platform layers |
+| Company | `/company/*` | about, why-us, ecosystem, case studies, legal |
+| Insights | `/insights`, `/insights/[slug]` | 6 engineering notes |
+| Contact | `/contact` | Primary conversion route |
+
+Primary CTA throughout: **Talk to an Expert**.
+
+### Homepage narrative
+
+The section order deliberately tells one story:
+
+1. **Business challenge** — `Hero`, `ChallengeSection`
+2. **Solution** — `SolutionsGrid`, `CoreSolutions`
+3. **Technology + integration** — `IntegrationSection`, `AppIntegrationSection`,
+   `CloudSection`, `SecuritySection`, `TechnologyLayersSection`
+4. **Implementation** — `ProcessSection` (7 stages)
+5. **Operations** — `ManagedServicesSection`
+6. **Outcome** — `IndustriesSection`, `WhyChooseUs`, `PartnerSection`,
+   `CaseStudiesSection`, `AboutSection`, `FinalCTA`, `ContactSection`
 
 ---
 
-## Customising
+## Where the content lives
 
-### 1. Brand
+Everything is data-driven. **Edit the data, not the JSX.**
 
-Everything brand-level lives in [`src/lib/site.ts`](src/lib/site.ts) — company name,
-legal name, tagline, phone, email, address, hours, social links. Change it there and
-the header, footer, contact section, metadata and legal pages all follow.
+| File | Contains |
+| --- | --- |
+| `src/lib/site.ts` | Brand name, tagline, contact details, legal links |
+| `src/lib/navigation.ts` | Header mega-menus + footer columns (also feeds search and the 404 page) |
+| `src/lib/data/home.ts` | Every homepage section: challenges, solution areas, core solutions, integration layers, cloud, security, technology layers, process, managed services, industries, reasons, ecosystem, case studies |
+| `src/lib/data/catalog.ts` | The 27 detail pages across solutions / technology / services / industries |
+| `src/lib/data/insights.ts` | Insight articles |
 
-The wordmark is [`src/components/ui/Logo.tsx`](src/components/ui/Logo.tsx). Replace
-the inline `<svg>` with a real logo asset when brand files exist; the favicon is
-`src/app/icon.svg`.
-
-### 2. Navigation
-
-[`src/lib/navigation.ts`](src/lib/navigation.ts) drives the desktop mega-menus, the
-mobile drawer, the search index and the 404 quick links. Add a link once and it
-appears in all four.
-
-### 3. Content
-
-- Homepage content → `src/lib/data/home.ts`
-- Detail pages → `src/lib/data/catalog.ts` (each entry generates a static route)
-
-Adding a new solution/product/service/industry means adding one object to the
-relevant array — the route, metadata, sibling links and sitemap entry follow
+Adding a solution, service, technology layer or industry means adding one object to
+the relevant array — route, metadata, sibling links and sitemap entry follow
 automatically.
 
-### 4. Colour and type
+---
 
-`tailwind.config.ts` holds the palette:
+## Components
 
-| Token | Role |
-| --- | --- |
-| `navy.*` | Primary — deep navy, the structural colour |
-| `accent.*` | Strong modern blue — all interactive elements |
-| `ember.*` | Small warm accent — eyebrow rules, numerals, single logo bar |
-| `surface.*`, `ink.*` | Whites, light greys and text greys |
+```
+src/components/
+├─ layout/     Navbar · MegaMenu · MobileMenu · SearchOverlay · Footer
+├─ home/       Hero · ChallengeSection · SolutionsGrid · CoreSolutions ·
+│              IntegrationSection · AppIntegrationSection · CloudSection ·
+│              SecuritySection · TechnologyLayersSection · ProcessSection ·
+│              ManagedServicesSection · IndustriesSection · WhyChooseUs ·
+│              PartnerSection · CaseStudiesSection · AboutSection ·
+│              FinalCTA · ContactSection
+├─ cards/      SolutionCard · SolutionAreaCard · ServiceCard · IndustryCard · CaseStudyCard
+├─ sections/   DetailPageView · PageBanner · Breadcrumbs · DetailVisual · LegalBody
+├─ forms/      ContactForm
+├─ ui/         Button · Container · SectionHeading · Reveal · Logo
+├─ visuals/    IntegrationStackVisual · AppFlowVisual · CloudVisual ·
+│              SecurityVisual · DataCenterVisual · NetworkSwitchVisual ·
+│              RackServerVisual · ServerRackVisual · PatternVisual
+└─ icons/      Icon (single 24×24 line-icon set)
+```
 
-Typography is Inter (body) + Manrope (display), loaded via a `<link>` in
-`layout.tsx` rather than `next/font` so the project builds without network access.
-Both fall back to the system UI stack.
+---
 
-### 5. Imagery
+## Imagery
 
-All artwork is **generated SVG**, not photography: rack elevations, a 2U server face,
-a 48-port switch, a segmentation diagram, a cold-aisle view, plus four abstract
-`PatternVisual` variants for cards. This keeps the repo dependency-free and free of
-any licensing question.
+All artwork is **generated SVG** — no photography, no external assets, no licensing
+question. The primary visuals now communicate integration rather than hardware:
 
-To move to photography, replace the component inside
-[`DetailVisual.tsx`](src/components/sections/DetailVisual.tsx) and the card media
-slots with `next/image` elements. Add `images.remotePatterns` to `next.config.mjs` if
-the images are remote.
+- `IntegrationStackVisual` — the seven-layer architecture (used in the hero)
+- `AppFlowVisual` — application ↔ API layer ↔ application ↔ database ↔ analytics
+- `CloudVisual` — hybrid platform with workload placement
 
-### 6. Contact form
+The hardware drawings (`RackServerVisual`, `NetworkSwitchVisual`, `ServerRackVisual`,
+`DataCenterVisual`) are retained but demoted to technology-layer pages, where they
+illustrate a component rather than advertise a product.
 
-The form posts JSON to `POST /api/enquiry`. That route re-validates every field
-server-side (the browser form can be bypassed) and currently logs the enquiry. Wire
-real delivery at the marked `TODO` in
-[`src/app/api/enquiry/route.ts`](src/app/api/enquiry/route.ts) — SMTP, a transactional
-email API or a CRM webhook. Keep credentials in `.env.local`; they must stay
-server-side.
+To move to photography, swap the component inside `sections/DetailVisual.tsx` and the
+card media slots for `next/image`, and add `images.remotePatterns` to
+`next.config.mjs` if the sources are remote.
 
-The form also carries a hidden honeypot field; submissions that fill it are silently
-discarded.
+---
 
-### 7. Partner logos
+## Contact form
 
-`PartnerSection` renders **empty placeholder slots** by design. Real manufacturer
-marks should only be added once partnership or authorisation is confirmed in
-writing — trade marks remain the property of their owners.
+Fields: Name, Company, Business Email, Phone, Industry, Requirement, Message.
+Requirement options are solution-oriented (Cloud Solutions, Software Integration,
+Cybersecurity, Network Solutions, Infrastructure, Data Center, Managed Services,
+Digital Transformation, Other). Submit button: **Talk to Our Experts**.
+
+Posts JSON to `POST /api/enquiry`, which re-validates every field server-side and
+currently logs the enquiry. Wire real delivery at the marked `TODO` in
+`src/app/api/enquiry/route.ts` — SMTP, a transactional email API or a CRM webhook.
+Credentials belong in `.env.local` and must stay server-side.
+
+A hidden honeypot field silently discards bot submissions.
+
+---
+
+## Legacy URLs
+
+`next.config.mjs` holds permanent redirects from the previous hardware-catalogue
+URLs (`/products/*` and the old solution/service/industry slugs) to their current
+equivalents, so existing links and bookmarks do not break.
 
 ---
 
 ## Notes on content accuracy
 
 No statistics, client names, certifications or partnership claims are invented
-anywhere in this site. Credibility copy describes *how the company works* rather than
-asserting numbers that would need substantiating. The legal pages are a drafting
-starting point and should be reviewed by a legal adviser before publication.
+anywhere on this site. Credibility copy describes *how the company works* rather than
+asserting numbers that would need substantiating.
+
+- `PartnerSection` renders **empty logo placeholders** by design — real vendor marks
+  should only be added once authorisation is confirmed in writing.
+- Insight articles carry no publication dates, because inventing a posting history
+  would be dishonest. Add a `date` field to `insights.ts` when publishing for real.
+- Legal pages are a drafting starting point and need review by a legal adviser.
 
 ---
 
 ## Accessibility & responsiveness
 
-- Skip-to-content link, focus-visible rings on every interactive element
+- Skip-to-content link; focus-visible rings on every interactive element
 - `Escape` closes the mega-menu, search and mobile drawer; menus close on route change
+- Mega-menu closes on pointer-out (the backdrop is a header descendant, so it forwards
+  the leave intent — see `Navbar.tsx`)
 - Body scroll locks behind the mobile drawer
-- All motion is behind `prefers-reduced-motion`
+- All motion sits behind `prefers-reduced-motion`
 - Single-column mobile, two-column tablet, multi-column desktop; no horizontal scroll
 - Breakpoints: `sm` 640 · `md` 768 · `lg` 1024 (nav switches here) · container max 1320px

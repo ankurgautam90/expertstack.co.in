@@ -9,7 +9,7 @@ import { caseStudies } from "@/lib/data/home";
 export const metadata: Metadata = {
   title: "Case Studies",
   description:
-    "Representative infrastructure engagements — the challenge, the solution deployed and the resulting change.",
+    "Representative integration engagements — the business challenge, the solution designed and the outcome delivered.",
 };
 
 const ROWS = [
@@ -23,8 +23,8 @@ export default function CaseStudiesPage() {
     <>
       <PageBanner
         eyebrow="Case studies"
-        title="Infrastructure built for real-world challenges"
-        description="Representative engagements, described by what was wrong, what was built and what changed as a result. Client names are withheld unless we have permission to publish them."
+        title="Built for real-world business challenges"
+        description="Representative engagements, described by the problem the business had, the architecture we integrated and what changed as a result. Client names are withheld unless we have permission to publish them."
         crumbs={[
           { label: "Home", href: "/" },
           { label: "Company" },
@@ -35,8 +35,8 @@ export default function CaseStudiesPage() {
       <section className="bg-white py-20 lg:py-24">
         <div className="container space-y-14">
           {caseStudies.map((study, index) => (
-            <Reveal key={study.slug} as="article">
-              <div
+            <Reveal key={study.slug}>
+              <article
                 id={study.slug}
                 className="scroll-mt-28 overflow-hidden rounded-2xl border border-navy-100 shadow-card"
               >
@@ -83,12 +83,12 @@ export default function CaseStudiesPage() {
                     <p className="mt-8 flex items-start gap-2 rounded-lg bg-surface-muted px-4 py-3 text-[0.8125rem] leading-relaxed text-ink-soft">
                       <Icon name="check" size={16} className="mt-0.5 shrink-0 text-accent-600" />
                       Engagement details are described in general terms. We can walk
-                      through the specifics, including the bill of materials and the
-                      deployment plan, on a call.
+                      through the specifics, including the architecture and the
+                      integration approach, on a call.
                     </p>
                   </div>
                 </div>
-              </div>
+              </article>
             </Reveal>
           ))}
         </div>

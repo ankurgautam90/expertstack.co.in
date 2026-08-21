@@ -1,22 +1,22 @@
 import { Icon } from "@/components/icons/Icon";
 import { ButtonLink } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
-import { ServerRackVisual } from "@/components/visuals/ServerRackVisual";
+import { IntegrationStackVisual } from "@/components/visuals/IntegrationStackVisual";
 
-/** The six words the business needs a visitor to read first. */
+/** The capabilities the business needs a visitor to register first. */
 const PILLARS = [
-  "Servers",
-  "Networking",
-  "Firewalls",
-  "Storage",
-  "Data Center",
-  "IT Services",
+  "Consulting",
+  "Architecture",
+  "Integration",
+  "Cloud",
+  "Cybersecurity",
+  "Managed Services",
 ];
 
 const SPEC_CHIPS = [
-  { icon: "server" as const, label: "Rack compute", value: "1U – 4U platforms" },
-  { icon: "network" as const, label: "Switching", value: "Access to core" },
-  { icon: "shield" as const, label: "Perimeter", value: "HA firewall pairs" },
+  { icon: "api" as const, label: "Applications", value: "Connected by design" },
+  { icon: "cloud" as const, label: "Platform", value: "Private · public · hybrid" },
+  { icon: "shield" as const, label: "Security", value: "Built into every layer" },
 ];
 
 export function Hero() {
@@ -41,15 +41,15 @@ export function Hero() {
         <div>
           <Reveal>
             <p className="eyebrow text-accent-300 before:bg-ember-500">
-              Enterprise IT infrastructure
+              IT solutions &amp; systems integration
             </p>
           </Reveal>
 
           <Reveal delay={80}>
             <h1 className="mt-6 text-[2.5rem] font-extrabold leading-[1.06] tracking-[-0.03em] text-white sm:text-5xl lg:text-display-lg xl:text-[4rem]">
-              Powering the Infrastructure Behind{" "}
+              Connecting Technology.{" "}
               <span className="relative whitespace-nowrap">
-                <span className="relative z-10">Modern Business</span>
+                <span className="relative z-10">Enabling Business.</span>
                 <span
                   aria-hidden="true"
                   className="absolute inset-x-0 bottom-1.5 z-0 h-3 bg-accent-600/40 lg:bottom-2 lg:h-4"
@@ -60,18 +60,18 @@ export function Hero() {
 
           <Reveal delay={160}>
             <p className="mt-7 max-w-xl text-base leading-relaxed text-navy-200 sm:text-lg">
-              Enterprise-grade servers, networking, security and data center solutions
-              built for performance, reliability and scalability.
+              We design, integrate and manage secure technology solutions that connect
+              applications, infrastructure, cloud and business operations.
             </p>
           </Reveal>
 
           <Reveal delay={240}>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <ButtonLink href="/#core-solutions" size="lg" withArrow>
-                Explore Solutions
+              <ButtonLink href="/contact" size="lg" withArrow>
+                Talk to an Expert
               </ButtonLink>
-              <ButtonLink href="/#contact" variant="onDark" size="lg">
-                Request a Quote
+              <ButtonLink href="/#solutions" variant="onDark" size="lg">
+                Explore Solutions
               </ButtonLink>
             </div>
           </Reveal>
@@ -91,25 +91,25 @@ export function Hero() {
           </Reveal>
         </div>
 
-        {/* Visual */}
+        {/* Visual — the architecture we integrate, not a piece of hardware */}
         <Reveal delay={200} className="relative mx-auto w-full max-w-md lg:max-w-none">
           <div className="relative">
             <span
               aria-hidden="true"
               className="absolute inset-x-8 bottom-6 top-10 rounded-2xl bg-accent-600/15 blur-2xl"
             />
-            <ServerRackVisual className="relative mx-auto w-full max-w-[24rem] drop-shadow-[0_40px_60px_rgba(5,14,27,0.6)]" />
+            <IntegrationStackVisual className="relative mx-auto w-full drop-shadow-[0_40px_60px_rgba(5,14,27,0.6)]" />
 
-            {/* Floating specification chips */}
+            {/* Floating capability chips */}
             <div className="pointer-events-none absolute inset-0 hidden sm:block">
               {SPEC_CHIPS.map((chip, index) => (
                 <div
                   key={chip.label}
-                  style={{ top: `${14 + index * 27}%` }}
+                  style={{ top: `${10 + index * 34}%` }}
                   className={
                     index % 2 === 0
-                      ? "absolute -left-4 flex items-center gap-3 rounded-lg border border-white/10 bg-navy-900/85 px-4 py-3 backdrop-blur-md lg:-left-10"
-                      : "absolute -right-4 flex items-center gap-3 rounded-lg border border-white/10 bg-navy-900/85 px-4 py-3 backdrop-blur-md lg:-right-10"
+                      ? "absolute -left-4 flex items-center gap-3 rounded-lg border border-white/10 bg-navy-900/85 px-4 py-3 backdrop-blur-md lg:-left-8"
+                      : "absolute -right-4 flex items-center gap-3 rounded-lg border border-white/10 bg-navy-900/85 px-4 py-3 backdrop-blur-md lg:-right-8"
                   }
                 >
                   <span className="grid h-8 w-8 place-items-center rounded-md bg-accent-600/20 text-accent-300">

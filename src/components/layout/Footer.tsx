@@ -30,8 +30,8 @@ export function Footer() {
               built to run reliably at scale.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <ButtonLink href="/#contact" size="md" withArrow>
-                Request a Quote
+              <ButtonLink href="/contact" size="md" withArrow>
+                Talk to an Expert
               </ButtonLink>
               <ButtonLink href={contact.phoneHref} variant="onDark" size="md">
                 <Icon name="phone" size={16} />

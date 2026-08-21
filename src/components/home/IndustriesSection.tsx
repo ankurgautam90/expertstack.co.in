@@ -10,7 +10,7 @@ export function IndustriesSection() {
         <SectionHeading
           eyebrow="Industries"
           title="Solutions Built for Your Industry"
-          description="The technology overlaps across sectors. The constraints do not — procurement rules, clinical hours, shop-floor conditions and audit expectations all change the design."
+          description="The technology overlaps across sectors — the constraints do not. Each of these starts from the business challenge, not from a list of platforms."
           align="center"
         />
 

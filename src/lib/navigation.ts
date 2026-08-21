@@ -15,7 +15,7 @@ export type NavColumn = {
 export type NavItem = {
   label: string;
   href: string;
-  /** Rich mega-menu panel. Absent for simple links such as Home. */
+  /** Rich mega-menu panel. Absent for simple links such as Home or Contact. */
   menu?: {
     /** Left-hand promotional rail inside the panel. */
     feature: {
@@ -30,127 +30,67 @@ export type NavItem = {
 };
 
 /**
- * Corporate navigation: a small number of top-level business areas, each
- * opening a structured panel. Kept deliberately shallow — two levels, no more.
+ * Corporate navigation for a systems integrator: solution areas first, the
+ * service lifecycle second, then who we serve and what we build on.
+ * Deliberately two levels deep — no more.
  */
 export const navigation: NavItem[] = [
   { label: "Home", href: "/" },
   {
     label: "Solutions",
-    href: "/#core-solutions",
+    href: "/#solutions",
     menu: {
       feature: {
         eyebrow: "Solution areas",
-        title: "Infrastructure designed as one system",
-        body: "Compute, network, security and storage planned together so capacity, resilience and support all line up.",
-        href: "/#core-solutions",
-        cta: "See how we build",
+        title: "One environment, not six disconnected projects",
+        body: "Cloud, applications, identity, network and data designed together so they actually work as a single system.",
+        href: "/#integration",
+        cta: "How we integrate",
       },
       columns: [
         {
-          heading: "By capability",
+          heading: "Platform & applications",
           links: [
             {
-              label: "Compute Infrastructure",
-              href: "/solutions/compute-infrastructure",
-              description: "Rack servers, virtualization hosts and GPU nodes",
-              icon: "server",
+              label: "Cloud & Infrastructure",
+              href: "/solutions/cloud-infrastructure",
+              description: "Private, hybrid, migration and modernization",
+              icon: "cloud",
             },
             {
-              label: "Network Infrastructure",
-              href: "/solutions/network-infrastructure",
-              description: "Campus, branch and data center switching",
+              label: "Software & Application Integration",
+              href: "/solutions/application-integration",
+              description: "APIs, middleware, enterprise applications",
+              icon: "api",
+            },
+            {
+              label: "Data & Storage",
+              href: "/solutions/data-storage",
+              description: "Data management, backup and recovery",
+              icon: "storage",
+            },
+          ],
+        },
+        {
+          heading: "Secure & operate",
+          links: [
+            {
+              label: "Cybersecurity",
+              href: "/solutions/cybersecurity",
+              description: "Identity, access, network and endpoint",
+              icon: "shield",
+            },
+            {
+              label: "Enterprise Networking",
+              href: "/solutions/enterprise-networking",
+              description: "Architecture, LAN/WAN, SD-WAN, wireless",
               icon: "network",
             },
             {
-              label: "Network Security",
-              href: "/solutions/network-security",
-              description: "Firewalls, segmentation and secure access",
-              icon: "shield",
-            },
-          ],
-        },
-        {
-          heading: "By platform",
-          links: [
-            {
-              label: "Storage Solutions",
-              href: "/solutions/storage-solutions",
-              description: "SAN, NAS, backup and data protection",
-              icon: "storage",
-            },
-            {
-              label: "Data Center Infrastructure",
-              href: "/solutions/data-center-infrastructure",
-              description: "Racks, power, cooling and cabling",
-              icon: "datacenter",
-            },
-            {
-              label: "Virtualization",
-              href: "/solutions/virtualization",
-              description: "Hypervisor platforms and consolidation",
-              icon: "layers",
-            },
-          ],
-        },
-      ],
-    },
-  },
-  {
-    label: "Products",
-    href: "/#categories",
-    menu: {
-      feature: {
-        eyebrow: "Hardware catalogue",
-        title: "Specified for the workload, not the price list",
-        body: "Configurations sized against real utilisation, with a clear upgrade path and supported lifecycle.",
-        href: "/#contact",
-        cta: "Request a configuration",
-      },
-      columns: [
-        {
-          heading: "Core hardware",
-          links: [
-            {
-              label: "Rack Servers",
-              href: "/products/rack-servers",
-              description: "1U – 4U enterprise compute",
-              icon: "server",
-            },
-            {
-              label: "Network Switches",
-              href: "/products/network-switches",
-              description: "Access, aggregation and core",
-              icon: "network",
-            },
-            {
-              label: "Firewalls",
-              href: "/products/firewalls",
-              description: "Next-generation perimeter and internal",
-              icon: "shield",
-            },
-          ],
-        },
-        {
-          heading: "Storage & accessories",
-          links: [
-            {
-              label: "Storage",
-              href: "/products/storage",
-              description: "Block, file and backup appliances",
-              icon: "storage",
-            },
-            {
-              label: "Server Accessories",
-              href: "/products/server-accessories",
-              description: "Memory, drives, controllers, rails",
-              icon: "chip",
-            },
-            {
-              label: "Network Accessories",
-              href: "/products/network-accessories",
-              description: "Optics, cabling, PDUs, patching",
-              icon: "cable",
+              label: "Managed IT Services",
+              href: "/solutions/managed-it-services",
+              description: "Monitoring, operations and support",
+              icon: "monitor",
             },
           ],
         },
@@ -162,61 +102,61 @@ export const navigation: NavItem[] = [
     href: "/#process",
     menu: {
       feature: {
-        eyebrow: "Delivery",
-        title: "From design review to signed handover",
-        body: "The team that scopes the environment is the team that racks, configures and supports it.",
+        eyebrow: "Engagement model",
+        title: "From strategy to operations",
+        body: "The team that designs the architecture is the team that implements it and stays on to run it.",
         href: "/#process",
-        cta: "See our delivery model",
+        cta: "See how we work",
       },
       columns: [
         {
-          heading: "Build",
+          heading: "Design & build",
           links: [
             {
-              label: "IT Infrastructure",
-              href: "/services/it-infrastructure",
-              description: "Assessment, architecture and roadmap",
+              label: "Consulting",
+              href: "/services/consulting",
+              description: "Assessment, requirements and roadmap",
+              icon: "eye",
+            },
+            {
+              label: "Solution Architecture",
+              href: "/services/architecture",
+              description: "Target design and technology selection",
               icon: "blueprint",
             },
             {
-              label: "Server Deployment",
-              href: "/services/server-deployment",
-              description: "Racking, firmware, OS and hypervisor",
-              icon: "server",
+              label: "Technology Integration",
+              href: "/services/integration",
+              description: "Connecting platforms into one environment",
+              icon: "workflow",
             },
             {
-              label: "Network Deployment",
-              href: "/services/network-deployment",
-              description: "Switching, routing, wireless, VLANs",
-              icon: "network",
-            },
-            {
-              label: "Firewall Deployment",
-              href: "/services/firewall-deployment",
-              description: "Policy design, rollout and tuning",
-              icon: "shield",
+              label: "Implementation",
+              href: "/services/implementation",
+              description: "Build, test, migrate and deploy",
+              icon: "layers",
             },
           ],
         },
         {
-          heading: "Operate",
+          heading: "Secure & run",
           links: [
             {
-              label: "Data Center Services",
-              href: "/services/data-center-services",
-              description: "Server room and DC build-out",
-              icon: "datacenter",
+              label: "Security Services",
+              href: "/services/security",
+              description: "Hardening, controls and assurance",
+              icon: "shield",
             },
             {
-              label: "Migration",
-              href: "/services/migration",
-              description: "Workload, storage and site moves",
-              icon: "migrate",
+              label: "Managed Services",
+              href: "/services/managed-services",
+              description: "Monitoring, operations and improvement",
+              icon: "monitor",
             },
             {
-              label: "AMC & Support",
-              href: "/services/amc-support",
-              description: "Contracted maintenance and spares",
+              label: "Support & AMC",
+              href: "/services/support",
+              description: "Contracted response and maintenance",
               icon: "support",
             },
           ],
@@ -231,7 +171,7 @@ export const navigation: NavItem[] = [
       feature: {
         eyebrow: "Sector experience",
         title: "The constraints change with the sector",
-        body: "Regulated uptime, procurement rules, clinical hours or shop-floor conditions all shape the design.",
+        body: "Regulated uptime, procurement rules, clinical hours or plant conditions all shape the architecture.",
         href: "/#industries",
         cta: "Browse industries",
       },
@@ -242,16 +182,77 @@ export const navigation: NavItem[] = [
             { label: "Banking & Finance", href: "/industries/banking-finance", icon: "bank" },
             { label: "Government & PSU", href: "/industries/government-psu", icon: "government" },
             { label: "Healthcare", href: "/industries/healthcare", icon: "health" },
-            { label: "Education", href: "/industries/education", icon: "education" },
+            { label: "Energy & Utilities", href: "/industries/energy-utilities", icon: "power" },
           ],
         },
         {
           heading: "Commercial",
           links: [
             { label: "Manufacturing", href: "/industries/manufacturing", icon: "factory" },
+            { label: "Education", href: "/industries/education", icon: "education" },
             { label: "IT & ITES", href: "/industries/it-ites", icon: "code" },
             { label: "Retail", href: "/industries/retail", icon: "retail" },
-            { label: "Data Centers", href: "/industries/data-centers", icon: "datacenter" },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    label: "Technology",
+    href: "/#technology",
+    menu: {
+      feature: {
+        eyebrow: "Technology layers",
+        title: "Components chosen to fit the design",
+        body: "Compute, network, security and storage are selected to serve the architecture — never the other way round.",
+        href: "/#partners",
+        cta: "Our technology ecosystem",
+      },
+      columns: [
+        {
+          heading: "Platform layers",
+          links: [
+            {
+              label: "Compute Infrastructure",
+              href: "/technology/compute-infrastructure",
+              description: "Virtualization, private cloud, databases",
+              icon: "server",
+            },
+            {
+              label: "Enterprise Network Infrastructure",
+              href: "/technology/network-infrastructure",
+              description: "Campus, data center and WAN fabric",
+              icon: "network",
+            },
+            {
+              label: "Cybersecurity Architecture",
+              href: "/technology/cybersecurity-architecture",
+              description: "Segmentation, access and inspection",
+              icon: "shield",
+            },
+          ],
+        },
+        {
+          heading: "Data & operations",
+          links: [
+            {
+              label: "Data & Storage Platforms",
+              href: "/technology/data-storage-platforms",
+              description: "Primary storage, backup and recovery",
+              icon: "storage",
+            },
+            {
+              label: "Virtualization & Cloud Platforms",
+              href: "/technology/virtualization-cloud",
+              description: "Hypervisors and hybrid platforms",
+              icon: "cloud",
+            },
+            {
+              label: "IT Operations & Monitoring",
+              href: "/technology/it-operations",
+              description: "Observability, ITSM and automation",
+              icon: "monitor",
+            },
           ],
         },
       ],
@@ -263,8 +264,8 @@ export const navigation: NavItem[] = [
     menu: {
       feature: {
         eyebrow: "About us",
-        title: "A system integrator, not a reseller",
-        body: "We are measured on whether the environment runs — not on what left the warehouse.",
+        title: "A systems integrator, not a supplier",
+        body: "We are measured on whether the environment works end to end — not on what was delivered to the loading bay.",
         href: "/company/about-us",
         cta: "About the company",
       },
@@ -281,13 +282,13 @@ export const navigation: NavItem[] = [
             {
               label: "Why Choose Us",
               href: "/company/why-choose-us",
-              description: "How we are different to a box supplier",
+              description: "How we differ from a box supplier",
               icon: "check",
             },
             {
-              label: "Partners",
+              label: "Technology Ecosystem",
               href: "/company/partners",
-              description: "Our technology ecosystem",
+              description: "The platforms we build on",
               icon: "handshake",
             },
           ],
@@ -298,12 +299,18 @@ export const navigation: NavItem[] = [
             {
               label: "Case Studies",
               href: "/company/case-studies",
-              description: "Deployments and outcomes",
+              description: "Integrations and outcomes",
               icon: "chart",
             },
             {
+              label: "Insights",
+              href: "/insights",
+              description: "Notes from our engineers",
+              icon: "blueprint",
+            },
+            {
               label: "Contact",
-              href: "/#contact",
+              href: "/contact",
               description: "Talk to an engineer",
               icon: "mail",
             },
@@ -312,6 +319,8 @@ export const navigation: NavItem[] = [
       ],
     },
   },
+  { label: "Insights", href: "/insights" },
+  { label: "Contact", href: "/contact" },
 ];
 
 /** Footer link groups. Deliberately flatter than the header. */
@@ -319,31 +328,33 @@ export const footerColumns: NavColumn[] = [
   {
     heading: "Solutions",
     links: [
-      { label: "Compute", href: "/solutions/compute-infrastructure" },
-      { label: "Networking", href: "/solutions/network-infrastructure" },
-      { label: "Security", href: "/solutions/network-security" },
-      { label: "Storage", href: "/solutions/storage-solutions" },
-      { label: "Data Center", href: "/solutions/data-center-infrastructure" },
-    ],
-  },
-  {
-    heading: "Products",
-    links: [
-      { label: "Rack Servers", href: "/products/rack-servers" },
-      { label: "Switches", href: "/products/network-switches" },
-      { label: "Firewalls", href: "/products/firewalls" },
-      { label: "Storage", href: "/products/storage" },
-      { label: "Accessories", href: "/products/server-accessories" },
+      { label: "Cloud & Infrastructure", href: "/solutions/cloud-infrastructure" },
+      { label: "Application Integration", href: "/solutions/application-integration" },
+      { label: "Cybersecurity", href: "/solutions/cybersecurity" },
+      { label: "Enterprise Networking", href: "/solutions/enterprise-networking" },
+      { label: "Data & Storage", href: "/solutions/data-storage" },
+      { label: "Managed IT Services", href: "/solutions/managed-it-services" },
     ],
   },
   {
     heading: "Services",
     links: [
-      { label: "Infrastructure", href: "/services/it-infrastructure" },
-      { label: "Deployment", href: "/services/server-deployment" },
-      { label: "Migration", href: "/services/migration" },
-      { label: "AMC", href: "/services/amc-support" },
-      { label: "Support", href: "/services/amc-support" },
+      { label: "Consulting", href: "/services/consulting" },
+      { label: "Solution Architecture", href: "/services/architecture" },
+      { label: "Technology Integration", href: "/services/integration" },
+      { label: "Implementation", href: "/services/implementation" },
+      { label: "Managed Services", href: "/services/managed-services" },
+      { label: "Support & AMC", href: "/services/support" },
+    ],
+  },
+  {
+    heading: "Technology",
+    links: [
+      { label: "Compute Infrastructure", href: "/technology/compute-infrastructure" },
+      { label: "Network Infrastructure", href: "/technology/network-infrastructure" },
+      { label: "Cybersecurity Architecture", href: "/technology/cybersecurity-architecture" },
+      { label: "Data & Storage Platforms", href: "/technology/data-storage-platforms" },
+      { label: "Virtualization & Cloud", href: "/technology/virtualization-cloud" },
     ],
   },
   {
@@ -351,9 +362,10 @@ export const footerColumns: NavColumn[] = [
     links: [
       { label: "About", href: "/company/about-us" },
       { label: "Industries", href: "/#industries" },
-      { label: "Partners", href: "/company/partners" },
+      { label: "Technology Ecosystem", href: "/company/partners" },
       { label: "Case Studies", href: "/company/case-studies" },
-      { label: "Contact", href: "/#contact" },
+      { label: "Insights", href: "/insights" },
+      { label: "Contact", href: "/contact" },
     ],
   },
 ];

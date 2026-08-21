@@ -8,7 +8,7 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "About Us",
-  description: `${site.legalName} designs, supplies, deploys and supports enterprise IT infrastructure — compute, networking, security, storage and data center environments.`,
+  description: `${site.legalName} is a technology solutions and systems integration company — consulting, architecture, integration, cloud, cybersecurity and managed services.`,
 };
 
 export default function AboutPage() {
@@ -16,8 +16,8 @@ export default function AboutPage() {
     <>
       <PageBanner
         eyebrow="About us"
-        title="A system integrator, not a reseller"
-        description="We are measured on whether the environment runs — not on what left the warehouse. That difference shapes how we scope, how we deploy and what we commit to afterwards."
+        title="A systems integrator, not a reseller"
+        description="We are measured on whether the whole environment works end to end — not on what was delivered. That difference shapes how we scope, what we integrate and what we commit to afterwards."
         crumbs={[
           { label: "Home", href: "/" },
           { label: "Company" },

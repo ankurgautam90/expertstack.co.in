@@ -6,7 +6,7 @@ import { caseStudies } from "@/lib/data/home";
 
 export function CaseStudiesSection() {
   return (
-    <section className="bg-surface-muted py-20 lg:py-28">
+    <section className="bg-white py-20 lg:py-28">
       <div className="container">
         <SectionHeading
           eyebrow="Case studies"

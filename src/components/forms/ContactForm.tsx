@@ -12,15 +12,26 @@ import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 
 export const REQUIREMENTS = [
-  "Rack Server",
-  "Network Switch",
-  "Firewall",
-  "Storage",
-  "Data Center",
-  "Networking",
+  "Cloud Solutions",
+  "Software Integration",
   "Cybersecurity",
-  "IT Infrastructure",
-  "AMC / Support",
+  "Network Solutions",
+  "Infrastructure",
+  "Data Center",
+  "Managed Services",
+  "Digital Transformation",
+  "Other",
+];
+
+export const INDUSTRIES = [
+  "Banking & Finance",
+  "Government & PSU",
+  "Healthcare",
+  "Manufacturing",
+  "Energy & Utilities",
+  "Education",
+  "IT & ITES",
+  "Retail",
   "Other",
 ];
 
@@ -29,8 +40,8 @@ type Fields = {
   company: string;
   email: string;
   phone: string;
+  industry: string;
   requirement: string;
-  productService: string;
   message: string;
 };
 
@@ -39,8 +50,8 @@ const EMPTY: Fields = {
   company: "",
   email: "",
   phone: "",
+  industry: "",
   requirement: "",
-  productService: "",
   message: "",
 };
 
@@ -127,8 +138,8 @@ export function ContactForm() {
           Enquiry received
         </h3>
         <p className="mt-3 max-w-sm text-[0.9375rem] leading-relaxed text-ink-muted">
-          Thank you — an engineer will review your requirement and respond with a
-          configuration or a set of clarifying questions.
+          Thank you — one of our consultants will review your requirement and come back
+          with next steps or the questions we need answered first.
         </p>
         <button
           type="button"
@@ -149,7 +160,7 @@ export function ContactForm() {
     >
       <div className="grid gap-5 sm:grid-cols-2">
         <Field
-          label="Full Name"
+          label="Name"
           name="fullName"
           value={values.fullName}
           onChange={update("fullName")}
@@ -180,7 +191,7 @@ export function ContactForm() {
           required
         />
         <Field
-          label="Phone Number"
+          label="Phone"
           name="phone"
           type="tel"
           value={values.phone}
@@ -191,52 +202,26 @@ export function ContactForm() {
           required
         />
 
-        <div className="sm:col-span-2">
-          <Label htmlFor="requirement" required>
-            Requirement
-          </Label>
-          <div className="relative">
-            <select
-              id="requirement"
-              name="requirement"
-              value={values.requirement}
-              onChange={update("requirement")}
-              aria-invalid={Boolean(errors.requirement)}
-              className={cn(
-                fieldClasses,
-                "appearance-none pr-11",
-                values.requirement ? "text-navy-900" : "text-ink-soft/80",
-                errors.requirement
-                  ? "border-red-400 focus:ring-red-200"
-                  : "border-navy-200 focus:border-accent-500",
-              )}
-            >
-              <option value="">Select Requirement</option>
-              {REQUIREMENTS.map((requirement) => (
-                <option key={requirement} value={requirement}>
-                  {requirement}
-                </option>
-              ))}
-            </select>
-            <Icon
-              name="chevronDown"
-              size={18}
-              className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-ink-soft"
-            />
-          </div>
-          <FieldError message={errors.requirement} />
-        </div>
+        <SelectField
+          label="Industry"
+          name="industry"
+          value={values.industry}
+          onChange={update("industry")}
+          error={errors.industry}
+          placeholder="Select Industry"
+          options={INDUSTRIES}
+        />
 
-        <div className="sm:col-span-2">
-          <Field
-            label="Product / Service"
-            name="productService"
-            value={values.productService}
-            onChange={update("productService")}
-            placeholder="e.g. 2U dual-socket servers, 48-port PoE switches"
-            hint="Optional — helps us route the enquiry to the right engineer."
-          />
-        </div>
+        <SelectField
+          label="Requirement"
+          name="requirement"
+          value={values.requirement}
+          onChange={update("requirement")}
+          error={errors.requirement}
+          placeholder="Select Requirement"
+          options={REQUIREMENTS}
+          required
+        />
 
         <div className="sm:col-span-2">
           <Label htmlFor="message" required>
@@ -249,7 +234,7 @@ export function ContactForm() {
             value={values.message}
             onChange={update("message")}
             aria-invalid={Boolean(errors.message)}
-            placeholder="Quantities, timelines, existing environment, site locations — whatever context you have."
+            placeholder="What are you trying to achieve? Current environment, timelines, sites and any constraints all help."
             className={cn(
               fieldClasses,
               "resize-y",
@@ -294,7 +279,7 @@ export function ContactForm() {
           disabled={status === "submitting"}
           withArrow={status !== "submitting"}
         >
-          {status === "submitting" ? "Sending…" : "Submit Enquiry"}
+          {status === "submitting" ? "Sending…" : "Talk to Our Experts"}
         </Button>
         <p className="text-[0.75rem] leading-relaxed text-ink-soft sm:max-w-[16rem]">
           We use these details only to respond to your enquiry.
@@ -330,6 +315,64 @@ function FieldError({ message }: { message?: string }) {
     <p role="alert" className="mt-1.5 text-[0.75rem] font-medium text-red-600">
       {message}
     </p>
+  );
+}
+
+function SelectField({
+  label,
+  name,
+  value,
+  onChange,
+  error,
+  placeholder,
+  options,
+  required,
+}: {
+  label: string;
+  name: string;
+  value: string;
+  onChange: (event: ChangeEvent<HTMLSelectElement>) => void;
+  error?: string;
+  placeholder: string;
+  options: string[];
+  required?: boolean;
+}) {
+  return (
+    <div>
+      <Label htmlFor={name} required={required}>
+        {label}
+      </Label>
+      <div className="relative">
+        <select
+          id={name}
+          name={name}
+          value={value}
+          onChange={onChange}
+          aria-invalid={Boolean(error)}
+          className={cn(
+            fieldClasses,
+            "appearance-none pr-11",
+            value ? "text-navy-900" : "text-ink-soft/80",
+            error
+              ? "border-red-400 focus:ring-red-200"
+              : "border-navy-200 focus:border-accent-500",
+          )}
+        >
+          <option value="">{placeholder}</option>
+          {options.map((option) => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
+        <Icon
+          name="chevronDown"
+          size={18}
+          className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-ink-soft"
+        />
+      </div>
+      <FieldError message={error} />
+    </div>
   );
 }
 

@@ -103,13 +103,13 @@ export function MobileMenu({ onClose }: { onClose: () => void }) {
 
         <div className="mt-8 space-y-3">
           <ButtonLink
-            href="/#contact"
+            href="/contact"
             size="lg"
             className="w-full"
             onClick={onClose}
             withArrow
           >
-            Request a Quote
+            Talk to an Expert
           </ButtonLink>
           <ButtonLink
             href={site.contact.phoneHref}

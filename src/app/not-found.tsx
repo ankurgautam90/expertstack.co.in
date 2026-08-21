@@ -33,8 +33,8 @@ export default function NotFound() {
           <ButtonLink href="/" size="lg" withArrow>
             Back to home
           </ButtonLink>
-          <ButtonLink href="/#contact" variant="onDark" size="lg">
-            Request a Quote
+          <ButtonLink href="/contact" variant="onDark" size="lg">
+            Talk to an Expert
           </ButtonLink>
         </div>
 

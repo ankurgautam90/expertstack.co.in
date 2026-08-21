@@ -24,19 +24,19 @@ export function FinalCTA() {
             <div className="relative mx-auto max-w-3xl">
               <p className="eyebrow justify-center text-accent-300">Next step</p>
               <h2 className="mt-6 text-3xl font-extrabold leading-[1.1] tracking-[-0.025em] text-white sm:text-4xl lg:text-[3rem]">
-                Ready to Build Better IT Infrastructure?
+                Let&apos;s Solve the Right Problem
               </h2>
               <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-navy-200 sm:text-lg">
-                Let&apos;s discuss your infrastructure requirements and find the right
-                technology solution for your business.
+                Tell us what the business needs to achieve. We will come back with an
+                approach — or with the questions that have to be answered first.
               </p>
 
               <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
-                <ButtonLink href="/#contact" size="lg" withArrow>
-                  Request a Quote
+                <ButtonLink href="/contact" size="lg" withArrow>
+                  Talk to an Expert
                 </ButtonLink>
                 <ButtonLink href={site.contact.phoneHref} variant="onDark" size="lg">
-                  Talk to an Expert
+                  Request a Consultation
                 </ButtonLink>
               </div>
 

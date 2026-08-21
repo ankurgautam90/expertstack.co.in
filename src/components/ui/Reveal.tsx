@@ -7,20 +7,21 @@ import { cn } from "@/lib/utils";
  * Subtle enter animation: content slides up 16px and fades in the first time it
  * reaches the viewport, then stays put. Respects prefers-reduced-motion by way
  * of the global media query in globals.css.
+ *
+ * Always renders a plain <div> — it is a presentation wrapper, so semantic
+ * elements belong inside it rather than in place of it.
  */
 export function Reveal({
   children,
   delay = 0,
   className,
-  as: Tag = "div",
 }: {
   children: ReactNode;
   /** Stagger, in milliseconds. */
   delay?: number;
   className?: string;
-  as?: "div" | "section" | "li" | "article";
 }) {
-  const ref = useRef<HTMLElement | null>(null);
+  const ref = useRef<HTMLDivElement>(null);
   const [shown, setShown] = useState(false);
 
   useEffect(() => {
@@ -50,9 +51,8 @@ export function Reveal({
   }, []);
 
   return (
-    <Tag
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ref={ref as any}
+    <div
+      ref={ref}
       style={{ transitionDelay: `${delay}ms` }}
       className={cn(
         "transition-[opacity,transform] duration-700 ease-enterprise motion-reduce:transition-none",
@@ -61,6 +61,6 @@ export function Reveal({
       )}
     >
       {children}
-    </Tag>
+    </div>
   );
 }

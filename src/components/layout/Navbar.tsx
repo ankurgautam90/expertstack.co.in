@@ -189,12 +189,12 @@ export function Navbar() {
           </button>
 
           <ButtonLink
-            href="/#contact"
+            href="/contact"
             size="md"
             className="hidden sm:inline-flex"
             withArrow
           >
-            Request a Quote
+            Talk to an Expert
           </ButtonLink>
 
           <button

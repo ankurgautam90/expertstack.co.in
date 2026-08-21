@@ -229,6 +229,54 @@ const paths = {
       <path d="M20 3.5V8h-4.5M4 20.5V16h4.5" />
     </>
   ),
+  cloud: (
+    <>
+      <path d="M7 18.5h10a4 4 0 0 0 .6-7.96 6 6 0 0 0-11.53-1.3A3.75 3.75 0 0 0 7 18.5Z" />
+    </>
+  ),
+  api: (
+    <>
+      <path d="M8 5.5 4 12l4 6.5M16 5.5 20 12l-4 6.5" />
+      <circle cx="12" cy="12" r="1.6" />
+      <path d="M12 5.5v3M12 15.5v3" />
+    </>
+  ),
+  identity: (
+    <>
+      <circle cx="10" cy="8.5" r="3.5" />
+      <path d="M3.5 20a6.5 6.5 0 0 1 10.2-5.35" />
+      <path d="M17.5 12.5 21 14v3c0 2-1.6 3.4-3.5 4-1.9-.6-3.5-2-3.5-4v-3l3.5-1.5Z" />
+    </>
+  ),
+  monitor: (
+    <>
+      <rect x="2.5" y="4.5" width="19" height="13" rx="2" />
+      <path d="m6 12 3-3 2.5 3.5L14 10l4 4" />
+      <path d="M9 20.5h6M12 17.5v3" />
+    </>
+  ),
+  workflow: (
+    <>
+      <rect x="3" y="3.5" width="6" height="5" rx="1.5" />
+      <rect x="15" y="3.5" width="6" height="5" rx="1.5" />
+      <rect x="9" y="15.5" width="6" height="5" rx="1.5" />
+      <path d="M6 8.5v3a1.5 1.5 0 0 0 1.5 1.5h9A1.5 1.5 0 0 0 18 11.5v-3M12 13v2.5" />
+    </>
+  ),
+  apps: (
+    <>
+      <rect x="3.5" y="3.5" width="7" height="7" rx="1.5" />
+      <rect x="13.5" y="3.5" width="7" height="7" rx="1.5" />
+      <rect x="3.5" y="13.5" width="7" height="7" rx="1.5" />
+      <rect x="13.5" y="13.5" width="7" height="7" rx="1.5" />
+    </>
+  ),
+  scale: (
+    <>
+      <path d="M4 20V9M10 20V4M16 20v-7M22 20V7" />
+      <path d="M2 20h20" />
+    </>
+  ),
 } as const;
 
 export type IconName = keyof typeof paths;

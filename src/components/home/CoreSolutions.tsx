@@ -5,12 +5,12 @@ import { coreSolutions } from "@/lib/data/home";
 
 export function CoreSolutions() {
   return (
-    <section id="core-solutions" className="bg-surface-muted py-20 lg:py-28">
+    <section id="core-solutions" className="bg-white py-20 lg:py-28">
       <div className="container">
         <SectionHeading
           eyebrow="Core solutions"
           title="Our Core Solutions"
-          description="Each of these is a complete piece of work — assessed, designed, supplied, deployed and supported — rather than a product line with an engineer attached."
+          description="Each of these is a complete engagement — consulted, architected, integrated, implemented, secured and then operated — rather than a product line with an engineer attached."
           align="center"
         />
 

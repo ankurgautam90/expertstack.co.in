@@ -6,9 +6,9 @@
 export const site = {
   name: "Expertstack",
   legalName: "Expertstack Technologies",
-  tagline: "Enterprise Infrastructure Solutions",
+  tagline: "IT Solutions & Systems Integration",
   description:
-    "Enterprise-grade servers, networking, security and data center solutions built for performance, reliability and scalability.",
+    "We design, integrate and manage secure technology solutions that connect applications, infrastructure, cloud and business operations.",
   url: "https://www.expertstack.co.in",
   contact: {
     email: "sales@expertstack.co.in",

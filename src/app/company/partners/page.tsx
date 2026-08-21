@@ -6,7 +6,7 @@ import { PageBanner } from "@/components/sections/PageBanner";
 export const metadata: Metadata = {
   title: "Partners",
   description:
-    "Our technology ecosystem across server, networking, security, storage and virtualization platforms.",
+    "Our technology ecosystem across cloud, security, networking, compute, storage, software, virtualization and IT operations platforms.",
 };
 
 export default function PartnersPage() {
@@ -15,7 +15,7 @@ export default function PartnersPage() {
       <PageBanner
         eyebrow="Partners"
         title="Technology ecosystem"
-        description="We source through authorised channels across the major enterprise platform categories. Partner marks and authorisation levels are published only once confirmed in writing."
+        description="We work across multiple technology platforms and select against the requirement rather than a preferred vendor. Partner marks and authorisation levels are published only once confirmed in writing."
         crumbs={[
           { label: "Home", href: "/" },
           { label: "Company" },

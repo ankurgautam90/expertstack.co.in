@@ -13,8 +13,8 @@ type Enquiry = {
   company: string;
   email: string;
   phone: string;
+  industry?: string;
   requirement: string;
-  productService?: string;
   message: string;
 };
 
@@ -49,8 +49,8 @@ export async function POST(request: Request) {
     company: sanitise(body.company),
     email: sanitise(body.email),
     phone: sanitise(body.phone),
+    industry: sanitise(body.industry),
     requirement: sanitise(body.requirement),
-    productService: sanitise(body.productService),
     message: sanitise(body.message),
   };
 

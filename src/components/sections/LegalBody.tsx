@@ -55,7 +55,7 @@ export function LegalBody({ sections }: { sections: LegalSection[] }) {
             </div>
           ))}
 
-          <ButtonLink href="/#contact" size="lg" className="mt-10" withArrow>
+          <ButtonLink href="/contact" size="lg" className="mt-10" withArrow>
             Contact us
           </ButtonLink>
         </div>

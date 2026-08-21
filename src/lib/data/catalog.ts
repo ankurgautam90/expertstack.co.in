@@ -1,11 +1,14 @@
 import type { IconName } from "@/components/icons/Icon";
 
 export type VisualKey =
-  | "rack"
+  | "integration"
+  | "appflow"
+  | "cloud"
   | "server"
   | "switch"
   | "security"
   | "datacenter"
+  | "rack"
   | "circuit"
   | "topology"
   | "stack"
@@ -23,7 +26,7 @@ export type DetailPage = {
   icon: IconName;
 };
 
-export type CatalogSection = "solutions" | "products" | "services" | "industries";
+export type CatalogSection = "solutions" | "technology" | "services" | "industries";
 
 export const sectionMeta: Record<
   CatalogSection,
@@ -32,59 +35,294 @@ export const sectionMeta: Record<
   solutions: {
     label: "Solutions",
     eyebrow: "Solution area",
-    intro: "Infrastructure capability, designed and delivered end to end.",
+    intro: "Business outcomes delivered through integrated technology.",
   },
-  products: {
-    label: "Products",
-    eyebrow: "Product category",
-    intro: "Enterprise hardware, specified for the workload it has to carry.",
+  technology: {
+    label: "Technology",
+    eyebrow: "Technology layer",
+    intro: "The platform layers we design, integrate and operate.",
   },
   services: {
     label: "Services",
     eyebrow: "Service",
-    intro: "Delivery and aftercare, run to a documented method.",
+    intro: "How an engagement runs, from strategy through to operations.",
   },
   industries: {
     label: "Industries",
     eyebrow: "Industry",
-    intro: "Sector-specific constraints shape the design.",
+    intro: "Sector constraints shape the architecture.",
   },
 };
 
+/* ============================================================ SOLUTIONS */
+
 export const solutions: DetailPage[] = [
+  {
+    slug: "cloud-infrastructure",
+    label: "Cloud & Infrastructure",
+    title: "Cloud & Infrastructure",
+    summary:
+      "Private, public and hybrid platforms — with workload placement, migration and the operating model to run them.",
+    intro: [
+      "Cloud decisions are rarely all-or-nothing. Some workloads have latency, licensing or data-residency constraints that keep them on owned infrastructure; others benefit immediately from elasticity. The useful question is not whether to move, but what belongs where, and what it costs to run in each place.",
+      "We assess the estate workload by workload, design a target platform with landing zones, identity and networking defined up front, and migrate in waves against downtime windows the business has agreed. Then we help operate what we built.",
+    ],
+    highlights: [
+      {
+        title: "Placed by evidence",
+        body: "Each workload assessed on performance, dependency, licensing and data constraints before it moves.",
+        icon: "eye",
+      },
+      {
+        title: "Consistent across platforms",
+        body: "Identity, networking and monitoring designed to span private and public estates alike.",
+        icon: "cloud",
+      },
+      {
+        title: "Migrated in waves",
+        body: "Grouped, sequenced moves with a validation gate and a working rollback at each stage.",
+        icon: "migrate",
+      },
+    ],
+    capabilities: [
+      "Cloud readiness and workload placement assessment",
+      "Private, public and hybrid cloud architecture",
+      "Landing zone, identity and network design",
+      "Cloud and data center migration",
+      "Virtualization and infrastructure modernization",
+      "Cloud operations, cost and capacity management",
+    ],
+    visual: "cloud",
+    icon: "cloud",
+  },
+  {
+    slug: "application-integration",
+    label: "Software & Application Integration",
+    title: "Software & Application Integration",
+    summary:
+      "Applications, APIs, databases and business systems connected so data moves without anyone re-keying it.",
+    intro: [
+      "Most organisations do not have an application problem — they have an integration problem. Each system works; what fails is the space between them, where data is exported to a spreadsheet, reconciled by hand and typed into the next system a week later.",
+      "We design the integration layer: documented API contracts between systems, middleware where it earns its place, error handling and retry that make failures visible, and reporting drawn from an agreed source rather than four competing ones.",
+    ],
+    highlights: [
+      {
+        title: "Contracts, not connections",
+        body: "Each interface documented — payload, frequency, ownership and what happens when it fails.",
+        icon: "api",
+      },
+      {
+        title: "Failures surface",
+        body: "Retry, dead-letter handling and alerting, so a broken interface is noticed rather than discovered.",
+        icon: "monitor",
+      },
+      {
+        title: "One version of the data",
+        body: "A defined system of record per entity, so reporting stops depending on which export you opened.",
+        icon: "storage",
+      },
+    ],
+    capabilities: [
+      "Application and API integration design",
+      "Middleware and integration platform implementation",
+      "Enterprise and business application integration",
+      "Database and data-layer integration",
+      "ITSM and workflow platform integration",
+      "Interface monitoring, error handling and support",
+    ],
+    visual: "appflow",
+    icon: "api",
+  },
+  {
+    slug: "cybersecurity",
+    label: "Cybersecurity",
+    title: "Cybersecurity",
+    summary:
+      "Identity, privileged access, MFA, segmentation and monitoring designed as one control set.",
+    intro: [
+      "Security bought project by project produces overlapping tools and uncovered gaps — a strong perimeter with shared administrative passwords behind it, or an identity platform nothing is actually integrated with.",
+      "We design controls across identity, access, network, endpoint, application and data as a single architecture, integrate them with the systems they are supposed to protect, and make sure what they produce is monitored by someone.",
+    ],
+    highlights: [
+      {
+        title: "Identity at the centre",
+        body: "One authoritative source for who exists and what they can reach, integrated with the estate.",
+        icon: "identity",
+      },
+      {
+        title: "Privilege controlled",
+        body: "Administrative access brokered, recorded and time-bound instead of shared and permanent.",
+        icon: "lock",
+      },
+      {
+        title: "Monitored, not just logged",
+        body: "Events correlated into a small number of actionable alerts with defined escalation.",
+        icon: "monitor",
+      },
+    ],
+    capabilities: [
+      "Security architecture and control design",
+      "Identity and Access Management (IAM)",
+      "Privileged Access Management (PAM) and MFA",
+      "Network security, firewall and segmentation",
+      "SIEM, security monitoring and incident response",
+      "Endpoint security and vulnerability management",
+    ],
+    visual: "security",
+    icon: "shield",
+  },
+  {
+    slug: "enterprise-networking",
+    label: "Enterprise Networking",
+    title: "Enterprise Networking",
+    summary:
+      "Network architecture connecting users, applications, cloud and data centers — with the segmentation security depends on.",
+    intro: [
+      "The network is where every other decision eventually lands. Cloud migration, application integration and segmentation all assume connectivity that is predictable, resilient and understood — which is exactly what a network grown organically over a decade is not.",
+      "We design core, distribution, access, wireless and WAN as one architecture, document the addressing and segmentation, and build in the redundancy needed to lose a device or a link without the business noticing.",
+    ],
+    highlights: [
+      {
+        title: "Designed as one fabric",
+        body: "Campus, data center, WAN and cloud connectivity planned together rather than bolted end to end.",
+        icon: "network",
+      },
+      {
+        title: "Segmented by function",
+        body: "Traffic separated so a fault or a compromise stays inside one zone.",
+        icon: "shield",
+      },
+      {
+        title: "Documented as built",
+        body: "Addressing, VLAN plans, port maps and cable schedules handed over and kept current.",
+        icon: "blueprint",
+      },
+    ],
+    capabilities: [
+      "Network architecture and design",
+      "LAN, WAN and branch connectivity",
+      "SD-WAN design and implementation",
+      "Data center and campus switching",
+      "Enterprise wireless design and survey",
+      "Network monitoring and performance management",
+    ],
+    visual: "switch",
+    icon: "network",
+  },
+  {
+    slug: "data-storage",
+    label: "Data & Storage",
+    title: "Data & Storage",
+    summary:
+      "Storage, backup, protection and disaster recovery designed backwards from real recovery objectives.",
+    intro: [
+      "Storage decisions are recovery decisions. Before capacity or tiering comes the harder question: how much data can the business afford to lose, and how long can it wait to get it back. Those two answers determine everything downstream.",
+      "We agree recovery point and recovery time objectives with the business, design storage and protection to meet them, and then test restores — because an untested backup is an assumption, not a control.",
+    ],
+    highlights: [
+      {
+        title: "Objectives first",
+        body: "RPO and RTO agreed with the business before any platform is selected.",
+        icon: "refresh",
+      },
+      {
+        title: "Protected in depth",
+        body: "Snapshots, replication and an offsite or immutable copy, sized to the objectives.",
+        icon: "storage",
+      },
+      {
+        title: "Recovery proven",
+        body: "Restores tested at handover and repeatable as a routine operational check.",
+        icon: "check",
+      },
+    ],
+    capabilities: [
+      "Data management and storage architecture",
+      "Enterprise storage design and implementation",
+      "Backup design, retention and immutability",
+      "Disaster recovery design and testing",
+      "Data protection and archive",
+      "Capacity, performance and growth planning",
+    ],
+    visual: "stack",
+    icon: "storage",
+  },
+  {
+    slug: "managed-it-services",
+    label: "Managed IT Services",
+    title: "Managed IT Services",
+    summary:
+      "Monitoring, operations, incident management and continuous improvement after go-live.",
+    intro: [
+      "Environments do not stay as designed. Configuration drifts, capacity fills, certificates expire and subscriptions lapse — and the gap between the documented design and the running estate widens quietly until something breaks.",
+      "Managed services close that gap: continuous monitoring across infrastructure, network, security and applications, a defined incident path, preventive maintenance, and periodic review of whether the architecture still fits what the business is doing.",
+    ],
+    highlights: [
+      {
+        title: "One view of the estate",
+        body: "Infrastructure, network, security and application health in a single operational picture.",
+        icon: "monitor",
+      },
+      {
+        title: "Defined incident path",
+        body: "Detection, triage, escalation and review — written down and agreed before it is needed.",
+        icon: "workflow",
+      },
+      {
+        title: "Improvement, not just uptime",
+        body: "Regular review of capacity, risk and architecture fit, with recommendations you can act on.",
+        icon: "chart",
+      },
+    ],
+    capabilities: [
+      "Infrastructure, network and security monitoring",
+      "Application and platform support",
+      "Cloud operations and cost management",
+      "Incident, problem and change management",
+      "Preventive maintenance and health checks",
+      "Contracted technical support and AMC",
+    ],
+    visual: "signal",
+    icon: "monitor",
+  },
+];
+
+/* =========================================================== TECHNOLOGY */
+
+export const technology: DetailPage[] = [
   {
     slug: "compute-infrastructure",
     label: "Compute Infrastructure",
     title: "Compute Infrastructure",
     summary:
-      "Rack server platforms, virtualization hosts and GPU nodes sized against the workloads they actually carry.",
+      "Enterprise compute integrated with virtualization, private cloud, databases and business-critical applications.",
     intro: [
-      "Compute is where most infrastructure problems become visible — a database that no longer fits its host, a hypervisor cluster with no failover headroom, a backup window that runs into the working day. We start by measuring what the current environment is doing, not by quoting a server.",
-      "From there we specify a platform with the processor, memory, storage and network profile the workload needs, plus the redundancy and growth headroom written into the design so the next expansion is a purchase rather than a rebuild.",
+      "Compute is a component of an architecture, not a purchase in its own right. What matters is whether the platform carries the workloads assigned to it, tolerates the loss of a node at peak, and can grow without a redesign.",
+      "We size platforms against measured utilisation and the growth the business expects, build them to a repeatable standard, and integrate them with the virtualization, storage, network and management layers around them.",
     ],
     highlights: [
       {
         title: "Sized on evidence",
-        body: "Utilisation, IOPS and growth trends inform the configuration before any bill of materials is issued.",
+        body: "Utilisation, IOPS and growth trends inform the design before any configuration is proposed.",
         icon: "gauge",
       },
       {
-        title: "Standardised builds",
-        body: "Firmware baselines, BIOS profiles and OS images are repeatable, so the tenth host matches the first.",
+        title: "Real failover headroom",
+        body: "Clusters sized so losing a host at peak is a non-event rather than a degradation.",
         icon: "layers",
       },
       {
-        title: "Managed remotely",
-        body: "Out-of-band management configured on day one, so console access never depends on the production network.",
-        icon: "eye",
+        title: "Integrated, not installed",
+        body: "Management, monitoring and backup wired in at build time, not left as a later phase.",
+        icon: "workflow",
       },
     ],
     capabilities: [
-      "1U, 2U and 4U rack server platforms",
-      "Hypervisor host and cluster design",
-      "GPU-backed compute for AI and analytics workloads",
-      "Memory, drive and controller configuration",
-      "Out-of-band and lifecycle management setup",
+      "Compute platform sizing and architecture",
+      "Virtualization host and cluster design",
+      "GPU-backed platforms for AI and analytics workloads",
+      "Database and application platform integration",
+      "Out-of-band management and lifecycle tooling",
       "Capacity headroom and expansion planning",
     ],
     visual: "server",
@@ -92,319 +330,89 @@ export const solutions: DetailPage[] = [
   },
   {
     slug: "network-infrastructure",
-    label: "Network Infrastructure",
-    title: "Network Infrastructure",
+    label: "Enterprise Network Infrastructure",
+    title: "Enterprise Network Infrastructure",
     summary:
-      "Campus, branch and data center networks designed for availability first, then throughput.",
+      "Secure, scalable networking connecting users, applications, cloud and data centers.",
     intro: [
-      "Networks rarely fail because a switch was too slow. They fail because a single uplink carried everything, because a VLAN plan lived in somebody's head, or because a patch panel was never labelled. Good network design is mostly discipline.",
-      "We design core, distribution, access and wireless layers together, document the addressing and port plan, and build in the redundancy needed to survive a single device or link going away without a business interruption.",
+      "Network components are selected to serve a design. Access layers need port density and power budget; aggregation needs uplink capacity and resilience; data center fabric needs low latency and the right optics. Choosing one compromise platform for all three is how estates become fragile.",
+      "We specify by role, keep the platform consistent so one configuration model is learned once, and supply the optics, cabling and licensing needed so nothing blocks the implementation.",
     ],
     highlights: [
       {
-        title: "Resilient topology",
-        body: "Redundant uplinks and stacked or paired devices at each layer that matters, with tested failover.",
+        title: "Specified by role",
+        body: "Access, aggregation, core and WAN each chosen for the job they actually do.",
         icon: "network",
       },
       {
-        title: "Segmented by function",
-        body: "User, server, management, voice and guest traffic separated so a fault stays inside one segment.",
-        icon: "shield",
+        title: "Resilient by design",
+        body: "Redundant uplinks and paired devices wherever a single failure would be felt.",
+        icon: "refresh",
       },
       {
-        title: "Documented as built",
-        body: "Port maps, VLAN plans and cable schedules handed over — not reconstructed months later.",
-        icon: "blueprint",
+        title: "Segmentation ready",
+        body: "Built to carry the zoning that the security architecture depends on.",
+        icon: "shield",
       },
     ],
     capabilities: [
-      "Core, distribution and access layer design",
-      "Managed Layer 2 and Layer 3 switching",
-      "Routing, WAN links and branch connectivity",
-      "Enterprise wireless design and survey",
-      "VLAN, addressing and QoS planning",
-      "Structured cabling and patching standards",
+      "Campus, branch and data center switching",
+      "Routing, WAN and SD-WAN platforms",
+      "Enterprise wireless infrastructure",
+      "Network segmentation and VLAN architecture",
+      "Optics, structured cabling and passive infrastructure",
+      "Network monitoring and configuration management",
     ],
     visual: "switch",
     icon: "network",
   },
   {
-    slug: "network-security",
-    label: "Network Security",
-    title: "Network Security",
+    slug: "cybersecurity-architecture",
+    label: "Cybersecurity Architecture",
+    title: "Cybersecurity Architecture",
     summary:
-      "Firewalls, segmentation, secure access and inspection — deployed as a reviewed policy, not a default rule set.",
+      "Network security, identity, access and monitoring technologies integrated to protect enterprise environments.",
     intro: [
-      "A firewall is only as good as the policy on it. Most environments we assess have rules that were added under pressure years ago and never reviewed, alongside remote access that grew organically during a hurry.",
-      "We rebuild the policy against documented traffic flows, deploy the platform in a resilient pair, segment internal zones so lateral movement is constrained, and make sure the logging is somewhere the team will actually look.",
-    ],
-    highlights: [
-      {
-        title: "Policy from flows",
-        body: "Rules written against documented application flows, with an explicit default-deny position.",
-        icon: "lock",
-      },
-      {
-        title: "Internal segmentation",
-        body: "Inspection between internal zones so a compromised endpoint cannot roam the estate freely.",
-        icon: "shield",
-      },
-      {
-        title: "Visible by default",
-        body: "Logging, alerting and reporting configured at deployment, not left for a later phase.",
-        icon: "eye",
-      },
-    ],
-    capabilities: [
-      "Next-generation firewall deployment and HA pairing",
-      "Policy design, migration and rule-base cleanup",
-      "IDS / IPS and threat prevention configuration",
-      "Site-to-site and remote access VPN",
-      "Internal network segmentation",
-      "Logging, alerting and periodic policy review",
-    ],
-    visual: "security",
-    icon: "shield",
-  },
-  {
-    slug: "storage-solutions",
-    label: "Storage Solutions",
-    title: "Storage Solutions",
-    summary:
-      "SAN, NAS, backup and data protection designed around recovery objectives agreed in advance.",
-    intro: [
-      "Storage decisions are recovery decisions. Before capacity or tiering comes the harder question: how much data can the business afford to lose, and how long can it wait to get it back. Those two answers determine the design.",
-      "We plan capacity and performance tiers against real IOPS and growth, size the backup targets and retention to match the recovery objectives, and then test restores — because an untested backup is an assumption.",
-    ],
-    highlights: [
-      {
-        title: "Objectives first",
-        body: "Recovery point and recovery time targets agreed with the business before hardware is selected.",
-        icon: "refresh",
-      },
-      {
-        title: "Tiered sensibly",
-        body: "Performance and capacity tiers matched to workload profiles instead of a single blended pool.",
-        icon: "storage",
-      },
-      {
-        title: "Restores proven",
-        body: "Test restores run as part of handover, and repeatable as a routine operational check.",
-        icon: "check",
-      },
-    ],
-    capabilities: [
-      "SAN and block storage design and deployment",
-      "NAS and file services",
-      "Backup infrastructure and retention design",
-      "Snapshot, replication and offsite copies",
-      "Capacity, performance and growth planning",
-      "Restore testing and documented recovery runbooks",
-    ],
-    visual: "stack",
-    icon: "storage",
-  },
-  {
-    slug: "data-center-infrastructure",
-    label: "Data Center Infrastructure",
-    title: "Data Center Infrastructure",
-    summary:
-      "The physical layer — racks, power distribution, cooling, containment and structured cabling.",
-    intro: [
-      "Server rooms usually fail physically before they fail logically: a rack loaded past its power budget, hot air recirculating over the top of a cabinet, cabling that makes a simple swap a two-hour job.",
-      "We plan the white space properly — rack elevations, power paths with real redundancy, airflow separation, cable management and labelling — so the environment can be maintained safely and expanded without unpicking the last build.",
-    ],
-    highlights: [
-      {
-        title: "Planned elevations",
-        body: "Every rack drawn out with weight, power draw and airflow accounted for before equipment arrives.",
-        icon: "datacenter",
-      },
-      {
-        title: "Power with a path",
-        body: "Dual feeds, PDU sizing and UPS runtime specified against the actual connected load.",
-        icon: "power",
-      },
-      {
-        title: "Airflow separated",
-        body: "Hot and cold separation with blanking panels and containment so cooling reaches the intakes.",
-        icon: "cooling",
-      },
-    ],
-    capabilities: [
-      "Server room and data center layout design",
-      "Rack, cabinet and elevation planning",
-      "UPS, PDU and power distribution",
-      "Precision cooling and airflow containment",
-      "Structured cabling, patching and labelling",
-      "Environmental monitoring and access control",
-    ],
-    visual: "datacenter",
-    icon: "datacenter",
-  },
-  {
-    slug: "virtualization",
-    label: "Virtualization",
-    title: "Virtualization",
-    summary:
-      "Hypervisor platforms, consolidation and cluster design that removes single points of failure rather than concentrating them.",
-    intro: [
-      "Consolidation is straightforward to sell and easy to get wrong. Packing twenty workloads onto three hosts improves utilisation, but only helps availability if the cluster can genuinely lose a host at peak without degrading service.",
-      "We size clusters with real failover headroom, design shared storage and networking to match, and set the operational rules — affinity, resource limits, patching order — that keep the platform predictable over time.",
-    ],
-    highlights: [
-      {
-        title: "Real N+1",
-        body: "Failover capacity sized against peak demand, so losing a host is a non-event rather than a degradation.",
-        icon: "layers",
-      },
-      {
-        title: "Consolidated cleanly",
-        body: "Workloads grouped by profile and criticality, with affinity rules that keep dependent pairs apart.",
-        icon: "server",
-      },
-      {
-        title: "Operable long-term",
-        body: "Patching sequence, resource policy and monitoring defined so the platform does not drift.",
-        icon: "gauge",
-      },
-    ],
-    capabilities: [
-      "Hypervisor platform design and deployment",
-      "Cluster sizing with failover headroom",
-      "Physical-to-virtual consolidation",
-      "Shared storage and virtual networking design",
-      "Resource policy, affinity and HA configuration",
-      "Platform monitoring and patch planning",
-    ],
-    visual: "topology",
-    icon: "layers",
-  },
-];
-
-export const products: DetailPage[] = [
-  {
-    slug: "rack-servers",
-    label: "Rack Servers",
-    title: "Rack Servers",
-    summary:
-      "1U to 4U enterprise compute for virtualization, databases, applications and GPU workloads.",
-    intro: [
-      "Rack servers remain the workhorse of enterprise compute. The variables that matter are rarely headline — socket count, memory channel population, drive backplane type, controller cache, expansion slots and the management licence tier.",
-      "We configure to the workload and tell you plainly which choices affect performance, which affect serviceability and which are simply cost. Every configuration is quoted with its upgrade path.",
-    ],
-    highlights: [
-      {
-        title: "Configured, not listed",
-        body: "Processor, memory and storage chosen against the workload profile rather than a stock build.",
-        icon: "chip",
-      },
-      {
-        title: "Serviceable",
-        body: "Hot-swap drives, redundant power and tool-less rails specified where uptime justifies them.",
-        icon: "refresh",
-      },
-      {
-        title: "Managed remotely",
-        body: "Out-of-band controllers licensed and configured so remote hands are rarely needed.",
-        icon: "eye",
-      },
-    ],
-    capabilities: [
-      "1U, 2U and 4U rack-mount chassis",
-      "Single and dual socket configurations",
-      "Enterprise ECC memory configurations",
-      "SAS / SATA / NVMe drive and RAID options",
-      "Redundant power supplies and hot-swap cooling",
-      "Out-of-band remote management",
-    ],
-    visual: "server",
-    icon: "server",
-  },
-  {
-    slug: "network-switches",
-    label: "Network Switches",
-    title: "Network Switches",
-    summary:
-      "Access, aggregation and data center switching — managed, stackable and built for high availability.",
-    intro: [
-      "Switch selection is a question of role. Access switches need port density, PoE budget and manageability; aggregation needs uplink capacity and resilience; data center switching needs low latency and the right optics.",
-      "We specify by layer, keep the platform consistent so the team learns one configuration model, and size PoE budgets against everything that will eventually hang off the port — not just what is connected on day one.",
-    ],
-    highlights: [
-      {
-        title: "Specified by layer",
-        body: "Access, aggregation and core each chosen for their role rather than a single compromise model.",
-        icon: "network",
-      },
-      {
-        title: "PoE budgeted",
-        body: "Power budgets calculated for the full endpoint plan, including phones, access points and cameras.",
-        icon: "power",
-      },
-      {
-        title: "Stack and uplink ready",
-        body: "Stacking modules, optics and cabling supplied together so nothing blocks the install.",
-        icon: "cable",
-      },
-    ],
-    capabilities: [
-      "Managed Layer 2 access switches",
-      "Layer 3 routing and aggregation switches",
-      "Data center and top-of-rack switching",
-      "PoE and PoE+ switches for converged endpoints",
-      "Stackable and chassis-based platforms",
-      "Optics, stacking cables and accessories",
-    ],
-    visual: "switch",
-    icon: "network",
-  },
-  {
-    slug: "firewalls",
-    label: "Firewalls",
-    title: "Firewalls",
-    summary:
-      "Next-generation firewalls for perimeter, internal segmentation and secure remote access.",
-    intro: [
-      "Firewall sizing is routinely done on internet bandwidth alone, which is the wrong number. Throughput with inspection enabled, concurrent sessions, VPN tunnel count and logging volume are what determine whether the appliance holds up in year three.",
-      "We size against inspected throughput and session load, plan the high-availability pair properly, and account for the licence subscriptions that the security features actually depend on.",
+      "A firewall is only as good as the policy on it, and a policy is only as good as the flows it was written against. Most estates we assess carry rules added under pressure years ago and never reviewed, alongside remote access that grew organically.",
+      "We treat security as an architecture: platforms sized against inspected throughput, deployed resiliently, integrated with identity, and producing logs that are actually correlated and watched.",
     ],
     highlights: [
       {
         title: "Sized with inspection on",
-        body: "Throughput figures taken with the security services enabled, which is how it will run in production.",
+        body: "Throughput measured with security services enabled — how it will run in production.",
         icon: "gauge",
       },
       {
-        title: "Deployed in pairs",
-        body: "High-availability configuration with tested failover, not a single appliance carrying everything.",
-        icon: "shield",
+        title: "Integrated with identity",
+        body: "Policy that follows the user and the role, not just the source address.",
+        icon: "identity",
       },
       {
-        title: "Licensing made clear",
-        body: "Subscription terms and renewal exposure explained up front so there are no surprises at renewal.",
-        icon: "check",
+        title: "Feeding the monitoring",
+        body: "Logging and alerting configured at deployment and wired into the SIEM.",
+        icon: "monitor",
       },
     ],
     capabilities: [
-      "Next-generation firewall appliances",
-      "High-availability active/passive and active/active pairs",
-      "IPS, threat prevention and content filtering",
-      "SSL and IPSec VPN capability",
-      "Internal segmentation firewalls",
-      "Central management and logging platforms",
+      "Perimeter and internal segmentation firewalls",
+      "High-availability design and policy migration",
+      "IPS, threat prevention and content inspection",
+      "Site-to-site and remote access VPN",
+      "Identity, MFA and privileged access platforms",
+      "SIEM integration, logging and periodic policy review",
     ],
     visual: "security",
     icon: "shield",
   },
   {
-    slug: "storage",
-    label: "Storage",
-    title: "Storage",
-    summary: "Block, file and backup platforms — from entry arrays to tiered enterprise storage.",
+    slug: "data-storage-platforms",
+    label: "Data & Storage Platforms",
+    title: "Data & Storage Platforms",
+    summary:
+      "Primary storage, backup and recovery platforms sized against real data growth and recovery targets.",
     intro: [
-      "Capacity is the easy part of a storage quote. The parts that decide whether the platform performs are the drive mix, the controller pairing, the network connecting it and the protection scheme underneath.",
-      "We size against workload IOPS and latency requirements, plan the protection overhead honestly, and make sure the usable capacity after RAID, snapshots and growth is the number you were told.",
+      "Capacity is the easy part of a storage design. What decides whether the platform performs is the drive mix, controller pairing, the network connecting it and the protection scheme underneath — and whether the usable figure after overhead is the number anyone was told.",
+      "We size against workload IOPS and latency requirements, quote usable capacity honestly, and plan the protection platform alongside primary storage rather than as a separate project.",
     ],
     highlights: [
       {
@@ -413,343 +421,345 @@ export const products: DetailPage[] = [
         icon: "storage",
       },
       {
-        title: "Dual controller",
-        body: "Controller redundancy and multipathing configured so maintenance is not an outage.",
+        title: "Maintainable live",
+        body: "Controller redundancy and multipathing so maintenance is not an outage.",
         icon: "refresh",
       },
       {
-        title: "Backup included",
-        body: "Protection targets planned alongside primary storage rather than treated as a separate project.",
+        title: "Protection included",
+        body: "Backup targets and retention planned as part of the same design.",
         icon: "check",
       },
     ],
     capabilities: [
-      "Entry and midrange SAN arrays",
-      "NAS and unified file storage",
+      "Block, file and unified storage platforms",
       "All-flash and hybrid configurations",
-      "Backup appliances and deduplication targets",
-      "Expansion shelves and drive upgrades",
-      "Fibre Channel and iSCSI connectivity",
+      "Backup appliances, deduplication and immutability",
+      "Replication and disaster recovery platforms",
+      "Fibre Channel and IP storage networking",
+      "Capacity monitoring and expansion planning",
     ],
     visual: "stack",
     icon: "storage",
   },
   {
-    slug: "server-accessories",
-    label: "Server Accessories",
-    title: "Server Accessories",
+    slug: "virtualization-cloud",
+    label: "Virtualization & Cloud Platforms",
+    title: "Virtualization & Cloud Platforms",
     summary:
-      "Memory, drives, controllers, power supplies, rails and the parts that keep a platform serviceable.",
+      "Hypervisor and hybrid platforms that give workloads somewhere consistent to run.",
     intro: [
-      "Upgrades and spares are where compatibility bites. Memory that is not on the qualified list, a controller without the right cache battery, rails that do not match the cabinet depth — each is a small item that stops an install.",
-      "We supply parts matched to the specific platform and generation, and hold the detail — part numbers, firmware levels, qualified vendor lists — so an upgrade is planned rather than discovered on site.",
+      "Consolidation is easy to sell and easy to get wrong. Packing workloads onto fewer hosts improves utilisation, but only helps availability if the cluster can genuinely lose a host at peak without degrading service.",
+      "We size clusters with real failover headroom, design the shared storage and networking to match, and set the operating rules — affinity, resource policy, patching order — that keep the platform predictable as it grows.",
     ],
     highlights: [
       {
-        title: "Compatibility checked",
-        body: "Parts matched to the exact platform generation and firmware baseline before despatch.",
-        icon: "check",
+        title: "Genuine N+1",
+        body: "Failover capacity sized against peak demand rather than average.",
+        icon: "layers",
       },
       {
-        title: "Spares planning",
-        body: "Critical spares identified so a failure is a swap rather than a procurement cycle.",
-        icon: "refresh",
+        title: "Consistent across estates",
+        body: "The same operating model whether a workload runs on-premises or in public cloud.",
+        icon: "cloud",
       },
       {
-        title: "Install-ready",
-        body: "Rails, cables and brackets supplied with the part so nothing holds up the maintenance window.",
-        icon: "chip",
+        title: "Operable long term",
+        body: "Patching sequence, resource policy and monitoring defined so the platform does not drift.",
+        icon: "gauge",
       },
     ],
     capabilities: [
-      "Server memory modules and kits",
-      "SAS, SATA, NVMe and SSD drives",
-      "RAID and HBA controllers with cache options",
-      "Redundant power supplies and fan modules",
-      "Rail kits, bezels and cable management arms",
-      "Network daughter cards and expansion adapters",
+      "Hypervisor platform design and deployment",
+      "Cluster sizing, HA and affinity policy",
+      "Physical-to-virtual consolidation",
+      "Hybrid cloud platform integration",
+      "Container and modern workload platforms",
+      "Platform monitoring and patch management",
     ],
-    visual: "circuit",
-    icon: "chip",
+    visual: "cloud",
+    icon: "cloud",
   },
   {
-    slug: "network-accessories",
-    label: "Network Accessories",
-    title: "Network Accessories",
+    slug: "it-operations",
+    label: "IT Operations & Monitoring",
+    title: "IT Operations & Monitoring",
     summary:
-      "Optics, patch cables, panels, PDUs and the passive layer that determines whether the active layer works.",
+      "Observability, ITSM and automation tooling so the environment can actually be operated.",
     intro: [
-      "The passive layer is the least glamorous part of a network and the most common source of intermittent faults. Mismatched optics, untested patch leads and unlabelled panels cost more troubleshooting hours than most equipment failures.",
-      "We supply compatible optics, tested cabling and properly specified passive infrastructure — with labelling and documentation, because an unlabelled patch panel is a future outage.",
+      "An environment nobody can see is an environment nobody can run. Monitoring added late tends to watch what is easy to instrument rather than what matters, producing either silence or an alert volume the team learns to ignore.",
+      "We design the operations layer alongside the architecture: what is monitored, what constitutes an incident, where tickets are raised, and which routine work is automated rather than repeated by hand.",
     ],
     highlights: [
       {
-        title: "Compatible optics",
-        body: "Transceivers matched to platform, distance and fibre type, with compatibility confirmed.",
-        icon: "cable",
+        title: "Signal over volume",
+        body: "Alerts tuned to what a human should act on, correlated rather than raw.",
+        icon: "monitor",
       },
       {
-        title: "Tested cabling",
-        body: "Structured cabling installed and tested to standard, with results provided at handover.",
-        icon: "check",
+        title: "Tied to the process",
+        body: "Monitoring integrated with ITSM so detection creates a tracked ticket automatically.",
+        icon: "workflow",
       },
       {
-        title: "Labelled properly",
-        body: "Every port, panel and lead labelled to a scheme the internal team can follow.",
-        icon: "blueprint",
+        title: "Automated where it repeats",
+        body: "Routine operational tasks scripted so they happen consistently and leave a record.",
+        icon: "refresh",
       },
     ],
     capabilities: [
-      "SFP, SFP+, QSFP and DAC transceivers",
-      "Fibre and copper patch cabling",
-      "Patch panels, cable managers and racks",
-      "Rack PDUs and power cabling",
-      "Media converters and small-form switches",
-      "Labelling, testing and documentation",
+      "Infrastructure, network and application monitoring",
+      "Observability and dashboard design",
+      "ITSM platform integration and workflow",
+      "Alert correlation and escalation design",
+      "Operational automation and scripting",
+      "Reporting, capacity and service review",
     ],
-    visual: "circuit",
-    icon: "cable",
+    visual: "signal",
+    icon: "monitor",
   },
 ];
 
+/* ============================================================= SERVICES */
+
 export const services: DetailPage[] = [
   {
-    slug: "it-infrastructure",
-    label: "IT Infrastructure",
-    title: "IT Infrastructure Services",
+    slug: "consulting",
+    label: "Consulting",
+    title: "Consulting",
     summary:
-      "Assessment, architecture and roadmap — establishing what you have before deciding what you need.",
+      "Assessment, requirements and roadmap — establishing what you have before deciding what you need.",
     intro: [
-      "Most infrastructure projects begin with a purchase request and work backwards. We prefer the other order: assess the estate, understand the workloads and constraints, then design against them.",
-      "The output is a documented current state, a target architecture and a phased roadmap with dependencies and costs — enough for a business to make a decision, not just an engineer.",
+      "Most technology projects begin with a purchase request and work backwards. We prefer the other order: understand the business requirement, assess the current estate honestly, then decide what the right answer is — which is occasionally to change nothing.",
+      "The output is a documented current state, a target architecture and a phased roadmap with dependencies, risks and costs mapped — enough for a business to make a decision, not just an engineer.",
     ],
     highlights: [
       {
-        title: "Current state documented",
-        body: "Inventory, utilisation, dependencies and risk captured before recommendations are made.",
+        title: "Requirement led",
+        body: "We start from what the business has to achieve, not from a product line.",
         icon: "eye",
       },
       {
-        title: "Target architecture",
-        body: "A design that fits the business trajectory, with capacity and resilience justified.",
+        title: "Current state documented",
+        body: "Inventory, utilisation, dependencies and risk captured before recommendations are made.",
         icon: "blueprint",
       },
       {
-        title: "Phased roadmap",
+        title: "Phased and costed",
         body: "Sequenced work with dependencies, downtime windows and budget mapped per phase.",
         icon: "chart",
       },
     ],
     capabilities: [
-      "Infrastructure assessment and audit",
-      "Architecture design and documentation",
-      "Capacity and lifecycle planning",
-      "Technology refresh roadmaps",
-      "Bill of materials and budgetary costing",
-      "Design review and second opinion",
+      "Business requirement and technology alignment",
+      "Infrastructure, cloud and security assessment",
+      "Application and integration landscape review",
+      "Technology roadmap and lifecycle planning",
+      "Budgetary costing and business case support",
+      "Independent design review and second opinion",
     ],
     visual: "topology",
-    icon: "blueprint",
+    icon: "eye",
   },
   {
-    slug: "server-deployment",
-    label: "Server Deployment",
-    title: "Server Deployment",
+    slug: "architecture",
+    label: "Solution Architecture",
+    title: "Solution Architecture",
     summary:
-      "Racking, firmware, OS and hypervisor installation delivered to a plan with rollback at every step.",
+      "A target design with technology choices justified, integration points named and the growth path written down.",
     intro: [
-      "Deployment is where a good design either survives or quietly degrades. Servers staged and configured before they reach site spend less time in the rack, and a documented build sequence means the fifth host is identical to the first.",
-      "We pre-stage where possible, bring firmware to a known baseline, install and configure to the agreed build standard, and hand over with as-built documentation.",
+      "Architecture is where a project either becomes buildable or stays a wish. The value is in making the decisions explicit — why this platform, what it connects to, what happens when a component fails, and what has to change before capacity runs out.",
+      "We produce a design the implementation team can build from and the business can hold us to: logical and physical views, integration points, security controls, and the assumptions each decision rests on.",
     ],
     highlights: [
       {
-        title: "Pre-staged",
-        body: "Firmware, BIOS and base images applied before delivery so rack time stays short.",
+        title: "Decisions recorded",
+        body: "Every significant choice documented with its rationale and the alternatives considered.",
+        icon: "blueprint",
+      },
+      {
+        title: "Integration named",
+        body: "Every interface between platforms identified before build, not discovered during it.",
+        icon: "workflow",
+      },
+      {
+        title: "Vendor independent",
+        body: "Technology selected against the requirement, including keeping what already works.",
+        icon: "handshake",
+      },
+    ],
+    capabilities: [
+      "Target architecture and design documentation",
+      "Technology evaluation and selection",
+      "Integration and interface design",
+      "Security architecture and control mapping",
+      "High availability and disaster recovery design",
+      "Bill of materials and implementation planning",
+    ],
+    visual: "integration",
+    icon: "blueprint",
+  },
+  {
+    slug: "integration",
+    label: "Technology Integration",
+    title: "Technology Integration",
+    summary:
+      "Connecting platforms, applications, identity and network into one environment that behaves as a single system.",
+    intro: [
+      "Integration is the work most projects underestimate. Individual platforms usually install without much drama; what consumes the schedule is making them agree — on identity, on data formats, on certificates, on which system owns which record.",
+      "This is the core of what we do. We connect the layers, prove each interface with test evidence, and hand over an environment where the pieces genuinely work together rather than merely coexist.",
+    ],
+    highlights: [
+      {
+        title: "Interfaces proven",
+        body: "Each integration tested with evidence, including its failure and retry behaviour.",
+        icon: "check",
+      },
+      {
+        title: "Identity threaded through",
+        body: "One authoritative identity source connected to the platforms that depend on it.",
+        icon: "identity",
+      },
+      {
+        title: "No orphaned gaps",
+        body: "One team accountable across boundaries, so nothing falls between vendors.",
+        icon: "handshake",
+      },
+    ],
+    capabilities: [
+      "Application, API and middleware integration",
+      "Identity and directory integration",
+      "Cloud and on-premises platform integration",
+      "Monitoring, ITSM and security tool integration",
+      "Data and database integration",
+      "Interface testing, documentation and handover",
+    ],
+    visual: "appflow",
+    icon: "workflow",
+  },
+  {
+    slug: "implementation",
+    label: "Implementation",
+    title: "Implementation",
+    summary:
+      "Build, configure, migrate and cut over to a plan — with test evidence and a documented rollback at every stage.",
+    intro: [
+      "Implementation is where a good design either survives or quietly degrades. Work staged and configured before it reaches production shortens the change window, and a written build standard means the fifth instance matches the first.",
+      "We pre-stage wherever possible, execute to an agreed sequence with defined validation gates, and keep the source available until the target has been accepted.",
+    ],
+    highlights: [
+      {
+        title: "Staged first",
+        body: "Configuration built and reviewed before the change window opens.",
         icon: "chip",
       },
       {
-        title: "Built to standard",
-        body: "A written build standard applied consistently, so hosts are interchangeable.",
-        icon: "layers",
+        title: "Validated per stage",
+        body: "Each layer proven before the next is enabled, with evidence retained.",
+        icon: "check",
       },
       {
         title: "Rollback ready",
-        body: "Every change window has a documented back-out position agreed before work starts.",
+        body: "Every change window has a back-out position agreed before work starts.",
         icon: "refresh",
       },
     ],
     capabilities: [
-      "Physical racking, cabling and power connection",
-      "Firmware and BIOS baselining",
-      "Operating system and hypervisor installation",
-      "RAID, storage and network configuration",
-      "Out-of-band management setup",
-      "As-built documentation and handover",
+      "Platform build, configuration and hardening",
+      "Workload, data and application migration",
+      "Cutover planning, rehearsal and execution",
+      "Test planning and acceptance evidence",
+      "As-built documentation and knowledge transfer",
+      "Post-implementation review and tuning",
     ],
-    visual: "server",
-    icon: "server",
+    visual: "stack",
+    icon: "layers",
   },
   {
-    slug: "network-deployment",
-    label: "Network Deployment",
-    title: "Network Deployment",
+    slug: "security",
+    label: "Security Services",
+    title: "Security Services",
     summary:
-      "Switching, routing, wireless and VLAN rollout — configured, tested and documented.",
+      "Controls applied across identity, network, endpoint and data — then validated rather than assumed.",
     intro: [
-      "A network cutover is one of the few changes that can take an entire site offline at once, so it is planned in detail: staged configuration, a tested sequence, a defined maintenance window and a back-out that genuinely works.",
-      "We configure off-site where possible, label as we install, verify each layer before moving to the next, and leave behind a port map and configuration set the internal team can maintain.",
+      "Security services are not a separate workstream bolted to the end of a project. Controls are cheapest and most effective when they are designed into the architecture and implemented alongside it.",
+      "We harden platforms as they are built, implement identity and access controls with the integrations that make them meaningful, and validate the result — because a control nobody has tested is a control nobody should rely on.",
     ],
     highlights: [
       {
-        title: "Staged configuration",
-        body: "Device configs built and reviewed before the maintenance window opens.",
-        icon: "blueprint",
+        title: "Built in, not added on",
+        body: "Hardening and controls implemented during the build rather than retrofitted.",
+        icon: "shield",
       },
       {
-        title: "Verified per layer",
-        body: "Each layer proven — link, VLAN, routing, services — before the next is enabled.",
-        icon: "check",
-      },
-      {
-        title: "Handover you can use",
-        body: "Port maps, VLAN plans and configuration backups delivered as part of closure.",
-        icon: "network",
-      },
-    ],
-    capabilities: [
-      "Switch installation, stacking and uplink configuration",
-      "VLAN, routing and QoS implementation",
-      "Wireless access point deployment and tuning",
-      "Structured cabling and patching",
-      "Cutover planning and execution",
-      "Configuration backup and documentation",
-    ],
-    visual: "switch",
-    icon: "network",
-  },
-  {
-    slug: "firewall-deployment",
-    label: "Firewall Deployment",
-    title: "Firewall Deployment",
-    summary:
-      "Policy design, migration, rollout and tuning — including the rule-base cleanup nobody wants to do.",
-    intro: [
-      "Migrating a firewall is rarely a hardware exercise. The work is in the policy: identifying which rules are still needed, which flows were never documented, and which shadow rules can be removed without breaking a business process.",
-      "We map the flows, rebuild the policy against them, deploy in high availability, run a monitored bedding-in period, then tune before signing off.",
-    ],
-    highlights: [
-      {
-        title: "Flows mapped first",
-        body: "Application and management flows documented before rules are written.",
-        icon: "eye",
-      },
-      {
-        title: "Clean rule base",
-        body: "Shadowed, duplicate and expired rules removed rather than carried across.",
+        title: "Access under control",
+        body: "Identity, MFA and privileged access implemented and integrated with the estate.",
         icon: "lock",
       },
       {
-        title: "Tuned after cutover",
-        body: "A monitored period after go-live, with adjustments made from observed traffic.",
-        icon: "gauge",
+        title: "Validated",
+        body: "Controls tested and evidenced, with findings tracked through to closure.",
+        icon: "eye",
       },
     ],
     capabilities: [
-      "Firewall installation and HA pairing",
-      "Policy design and rule-base migration",
-      "NAT, routing and interface configuration",
-      "VPN setup for sites and remote users",
-      "IPS and threat prevention enablement",
-      "Logging, alerting and post-cutover tuning",
+      "Security control design and implementation",
+      "Platform and configuration hardening",
+      "IAM, PAM and MFA deployment",
+      "Firewall policy design and segmentation",
+      "SIEM onboarding and monitoring setup",
+      "Vulnerability assessment and remediation tracking",
     ],
     visual: "security",
     icon: "shield",
   },
   {
-    slug: "data-center-services",
-    label: "Data Center Services",
-    title: "Data Center Services",
+    slug: "managed-services",
+    label: "Managed Services",
+    title: "Managed Services",
     summary:
-      "Server room and data center build-out — layout, racks, power, cooling and structured cabling.",
+      "Monitoring, operations and continuous improvement so the environment keeps working as designed.",
     intro: [
-      "Whether it is a single comms room or a full white-space build, the same fundamentals decide whether it works: enough power with a real redundant path, cooling that reaches the intakes, cabling that can be traced, and access control that holds.",
-      "We handle the physical build end to end and coordinate with electrical and civil trades so the IT fit-out is not waiting on somebody else's schedule.",
+      "Handover is the point most engagements end and most problems begin. Configuration drifts, capacity fills, staff change, and the environment slowly stops resembling the design it was built to.",
+      "Managed services keep the two aligned: continuous monitoring across the stack, a defined incident and change path, preventive maintenance, and a regular review of whether the architecture still fits the business.",
     ],
     highlights: [
       {
-        title: "Designed to load",
-        body: "Power and cooling specified against connected load with headroom, not rack count.",
-        icon: "power",
+        title: "Whole-stack visibility",
+        body: "Infrastructure, network, security, cloud and applications in one operational picture.",
+        icon: "monitor",
       },
       {
-        title: "Airflow managed",
-        body: "Blanking, containment and layout planned so cold air reaches equipment intakes.",
-        icon: "cooling",
+        title: "Process, not heroics",
+        body: "Incident, problem and change handled through a defined and measurable path.",
+        icon: "workflow",
       },
       {
-        title: "Traceable cabling",
-        body: "Structured, labelled and tested cabling with documentation handed over.",
-        icon: "cable",
+        title: "Reviewed regularly",
+        body: "Periodic service review covering capacity, risk, incidents and architecture fit.",
+        icon: "chart",
       },
     ],
     capabilities: [
-      "Server room design and fit-out",
-      "Rack and cabinet installation",
-      "UPS, PDU and power distribution",
-      "Precision cooling and containment",
-      "Structured cabling and patching",
-      "Environmental monitoring and access control",
+      "Infrastructure, network and security monitoring",
+      "Cloud operations and cost governance",
+      "Application and platform support",
+      "Incident, problem and change management",
+      "Patch, configuration and lifecycle management",
+      "Service reporting and improvement planning",
     ],
-    visual: "datacenter",
-    icon: "datacenter",
+    visual: "signal",
+    icon: "monitor",
   },
   {
-    slug: "migration",
-    label: "Migration",
-    title: "Migration Services",
+    slug: "support",
+    label: "Support & AMC",
+    title: "Support & AMC",
     summary:
-      "Workload, storage and site migrations planned around the downtime the business can actually absorb.",
+      "Contracted response with named escalation, preventive maintenance and periodic health review.",
     intro: [
-      "Migrations are judged on one thing: whether the business noticed. That means the plan starts from the acceptable downtime window and dependency map, and works backwards to a method that fits inside it.",
-      "We discover dependencies properly, sequence the moves, rehearse where the risk justifies it, and keep the source available until the target is verified.",
-    ],
-    highlights: [
-      {
-        title: "Dependencies mapped",
-        body: "Application and data dependencies discovered before the move sequence is set.",
-        icon: "migrate",
-      },
-      {
-        title: "Sequenced in waves",
-        body: "Workloads grouped and moved in waves, each with its own validation gate.",
-        icon: "layers",
-      },
-      {
-        title: "Source kept warm",
-        body: "The original platform stays available until the target is verified and accepted.",
-        icon: "refresh",
-      },
-    ],
-    capabilities: [
-      "Physical-to-virtual and virtual-to-virtual migration",
-      "Server and application workload moves",
-      "Storage and data migration",
-      "Data center and office relocation",
-      "Cutover planning and rehearsal",
-      "Post-migration validation and decommissioning",
-    ],
-    visual: "topology",
-    icon: "migrate",
-  },
-  {
-    slug: "amc-support",
-    label: "AMC & Support",
-    title: "AMC & Support",
-    summary:
-      "Contracted maintenance, response commitments, spares handling and periodic health reviews.",
-    intro: [
-      "Support contracts are worth what their response terms say and no more. We keep the terms explicit — what is covered, what the response commitment is, how escalation works and how spares are handled.",
-      "Alongside reactive support, scheduled preventive maintenance and health reviews catch the failing power supply, the filling volume and the expired subscription before they become an incident.",
+      "A support contract is worth exactly what its terms say. We keep them explicit: what is covered, what the response commitment is, how escalation works, and how spares and replacements are handled.",
+      "Alongside reactive support, scheduled preventive maintenance catches the failing power supply, the filling volume and the expiring certificate before any of them become an incident.",
     ],
     highlights: [
       {
@@ -759,27 +769,29 @@ export const services: DetailPage[] = [
       },
       {
         title: "Preventive schedule",
-        body: "Periodic health checks on hardware, firmware, capacity and licence status.",
+        body: "Periodic health checks across hardware, firmware, capacity and licence status.",
         icon: "gauge",
       },
       {
-        title: "Spares handled",
-        body: "Critical spares identified and sourcing arranged so a failure is a swap.",
-        icon: "refresh",
+        title: "Named escalation",
+        body: "You know who picks it up and where it goes next when it is not resolving.",
+        icon: "support",
       },
     ],
     capabilities: [
-      "Annual maintenance contracts for servers, network and security",
-      "Preventive maintenance and health checks",
+      "Annual maintenance contracts across the stack",
       "Remote and on-site technical support",
+      "Preventive maintenance and health checks",
       "Firmware, patch and configuration management",
       "Spare parts planning and replacement handling",
-      "Infrastructure monitoring and periodic reporting",
+      "Periodic reporting and service review",
     ],
-    visual: "signal",
+    visual: "circuit",
     icon: "support",
   },
 ];
+
+/* =========================================================== INDUSTRIES */
 
 export const industryPages: DetailPage[] = [
   {
@@ -787,10 +799,10 @@ export const industryPages: DetailPage[] = [
     label: "Banking & Finance",
     title: "Banking & Finance",
     summary:
-      "Segmented networks, audited change control and infrastructure that can prove what it did.",
+      "Segmented architecture, controlled access and infrastructure that can evidence what it did.",
     intro: [
-      "Financial environments carry two constant pressures: continuity of service and the ability to evidence controls. Infrastructure has to be resilient, and it has to be documented well enough to withstand an audit.",
-      "We design with segmentation and inspection between zones, keep change records that stand up to review, and plan recovery so that restoring service is a rehearsed procedure rather than an improvisation.",
+      "Financial environments carry two constant pressures: continuity of service, and the ability to evidence controls on demand. Technology has to be resilient, and it has to be documented well enough to withstand an audit months later.",
+      "We design with segmentation and inspection between zones, integrate identity and privileged access so administrative action is attributable, and plan recovery as a rehearsed procedure rather than an improvisation.",
     ],
     highlights: [
       {
@@ -799,9 +811,9 @@ export const industryPages: DetailPage[] = [
         icon: "shield",
       },
       {
-        title: "Evidenced changes",
-        body: "Change records, approvals and as-built documentation kept to an auditable standard.",
-        icon: "blueprint",
+        title: "Attributable access",
+        body: "Privileged sessions brokered and recorded against a named individual.",
+        icon: "identity",
       },
       {
         title: "Rehearsed recovery",
@@ -810,12 +822,12 @@ export const industryPages: DetailPage[] = [
       },
     ],
     capabilities: [
-      "Branch and data center network design",
-      "Firewall segmentation and secure remote access",
-      "Resilient server and storage platforms",
+      "Segmented network and security architecture",
+      "Identity, privileged access and MFA",
+      "Core application and database integration",
+      "Resilient compute and storage platforms",
       "Backup, replication and recovery testing",
-      "Structured change and configuration control",
-      "Maintenance contracts with defined response",
+      "Managed monitoring with audit-ready reporting",
     ],
     visual: "circuit",
     icon: "bank",
@@ -825,34 +837,34 @@ export const industryPages: DetailPage[] = [
     label: "Government & PSU",
     title: "Government & PSU",
     summary:
-      "Procurement-compliant supply, documented deployment and infrastructure built to be handed over.",
+      "Procurement-compliant delivery, documented implementation and environments built to be handed over.",
     intro: [
-      "Public sector work runs on documentation and process as much as on technology. Specifications have to be met precisely, supply has to be traceable, and the deployment has to be handed over in a state the department can operate independently.",
-      "We work to the tender specification, supply through authorised channels with the paperwork intact, and deliver complete as-built documentation and knowledge transfer at closure.",
+      "Public sector work runs on documentation and process as much as on technology. Specifications must be met precisely, supply has to be traceable, and the department has to be able to operate the result without the integrator on site.",
+      "We work to the tender specification, integrate through authorised channels with the paperwork intact, and deliver complete as-built documentation and knowledge transfer at closure.",
     ],
     highlights: [
       {
         title: "Specification matched",
-        body: "Configurations mapped line by line to the technical specification issued.",
+        body: "Design mapped line by line to the technical specification issued.",
         icon: "check",
       },
       {
-        title: "Traceable supply",
-        body: "Authorised sourcing with documentation, warranty registration and serial records.",
+        title: "Traceable delivery",
+        body: "Authorised sourcing with documentation, warranty registration and asset records.",
         icon: "blueprint",
       },
       {
         title: "Handed over completely",
-        body: "As-built documents, configuration backups and knowledge transfer at project closure.",
+        body: "As-built documents, configuration backups and training at project closure.",
         icon: "building",
       },
     ],
     capabilities: [
-      "Tender-specification compliant configurations",
-      "Server, network and security supply and installation",
-      "Data center and server room build-out",
-      "Documentation packs and warranty registration",
-      "On-site knowledge transfer and training",
+      "Specification-compliant solution design",
+      "Infrastructure, network and security implementation",
+      "Data center and departmental IT build-out",
+      "Application and e-governance platform integration",
+      "Documentation packs and knowledge transfer",
       "Annual maintenance and support contracts",
     ],
     visual: "stack",
@@ -863,10 +875,10 @@ export const industryPages: DetailPage[] = [
     label: "Healthcare",
     title: "Healthcare",
     summary:
-      "Clinical systems that stay available, with maintenance planned around patient-facing hours.",
+      "Clinical systems that stay available, integrated, and protected around the clock.",
     intro: [
-      "Clinical infrastructure has an unusual constraint: the maintenance window is narrow, sometimes nonexistent, and the systems are in use around the clock. Redundancy has to carry the load during planned work.",
-      "We build platforms that tolerate component-level maintenance without service interruption, keep imaging and record data protected and recoverable, and schedule work around clinical operations.",
+      "Clinical infrastructure has an unusual constraint: the maintenance window is narrow or nonexistent, and the systems are in use continuously. Redundancy has to carry the load during planned work, not just during failure.",
+      "We build platforms that tolerate component maintenance without service interruption, integrate clinical and administrative applications so records follow the patient, and keep that data recoverable to agreed objectives.",
     ],
     highlights: [
       {
@@ -875,137 +887,175 @@ export const industryPages: DetailPage[] = [
         icon: "refresh",
       },
       {
-        title: "Data protected",
-        body: "Record and imaging data backed up and recoverable to agreed objectives.",
-        icon: "storage",
+        title: "Records that follow",
+        body: "Clinical and administrative systems integrated so data moves with the patient.",
+        icon: "api",
       },
       {
         title: "Scheduled sensitively",
-        body: "Change windows planned around clinical hours and departmental workflows.",
+        body: "Change windows planned around clinical hours and departmental workflow.",
         icon: "clock",
       },
     ],
     capabilities: [
-      "Highly available server and virtualization platforms",
-      "Imaging and record storage infrastructure",
-      "Segmented networks for clinical and administrative traffic",
-      "Wireless coverage across wards and departments",
-      "Backup and recovery for patient data systems",
-      "Support contracts aligned to clinical hours",
+      "Highly available compute and virtualization platforms",
+      "Clinical application and imaging integration",
+      "Segmented clinical and administrative networks",
+      "Identity and access control for clinical systems",
+      "Backup and recovery for patient data",
+      "Managed services aligned to clinical hours",
     ],
     visual: "signal",
     icon: "health",
-  },
-  {
-    slug: "education",
-    label: "Education",
-    title: "Education",
-    summary:
-      "Campus networks, labs and wireless that hold up under term-time peak load.",
-    intro: [
-      "Campus infrastructure has a distinctive demand curve — long quiet periods punctuated by dense, concentrated peaks when everybody connects at once. Design for the average and it will fail in the first week of term.",
-      "We size wireless and switching for peak concurrency, separate academic, administrative and guest traffic, and build labs that can be reimaged quickly between cohorts.",
-    ],
-    highlights: [
-      {
-        title: "Peak-sized wireless",
-        body: "Access point density and controller capacity planned for concurrent term-time load.",
-        icon: "bolt",
-      },
-      {
-        title: "Traffic separated",
-        body: "Academic, administrative, hostel and guest networks kept apart by design.",
-        icon: "network",
-      },
-      {
-        title: "Labs that reset",
-        body: "Lab and classroom systems built for rapid reimaging between cohorts.",
-        icon: "refresh",
-      },
-    ],
-    capabilities: [
-      "Campus-wide switching and wireless design",
-      "Computer lab and classroom infrastructure",
-      "Server and virtualization platforms for academic systems",
-      "Segmented networks with guest access control",
-      "Storage and backup for institutional data",
-      "Maintenance contracts across multiple buildings",
-    ],
-    visual: "topology",
-    icon: "education",
   },
   {
     slug: "manufacturing",
     label: "Manufacturing",
     title: "Manufacturing",
     summary:
-      "Plant-floor networks kept cleanly separate from enterprise IT, built for the physical conditions.",
+      "Plant systems and enterprise IT that exchange data without merging into one flat network.",
     intro: [
-      "Factory environments punish equipment specified for an office — dust, temperature swings, vibration and electrical noise all shorten the life of standard hardware in unprotected locations.",
-      "We specify appropriately rated equipment for plant areas, keep operational technology segmented from enterprise IT with controlled interconnects, and design for continuity across production shifts.",
+      "Manufacturing environments have two networks with genuinely different requirements. Plant systems prioritise determinism and continuity; enterprise IT prioritises change and connectivity. Flattening them together to share data is how incidents spread.",
+      "We design a controlled integration layer between OT and IT — inspected, segmented and monitored — so production data reaches business systems without exposing the plant floor.",
     ],
     highlights: [
       {
-        title: "Rated for the floor",
-        body: "Equipment and enclosures specified for the temperature, dust and vibration present.",
-        icon: "factory",
-      },
-      {
         title: "OT separated",
-        body: "Production networks segmented from enterprise IT with controlled, inspected interconnects.",
+        body: "Production networks segmented from enterprise IT with controlled interconnects.",
         icon: "shield",
       },
       {
-        title: "Shift-aware work",
-        body: "Change windows planned around production schedules and shift patterns.",
-        icon: "clock",
+        title: "Data still flows",
+        body: "Production information integrated into business systems through a governed path.",
+        icon: "api",
+      },
+      {
+        title: "Rated for the floor",
+        body: "Equipment specified for the temperature, dust and vibration actually present.",
+        icon: "factory",
       },
     ],
     capabilities: [
-      "Plant-floor and enterprise network design",
       "OT / IT segmentation and secure interconnect",
-      "Industrial-grade switching and cabling",
-      "Server and storage infrastructure for production systems",
+      "Plant-floor and enterprise network design",
+      "Production and ERP application integration",
       "Multi-site and warehouse connectivity",
-      "Maintenance aligned to production schedules",
+      "Compute and storage for production systems",
+      "Monitoring and maintenance around shift patterns",
     ],
     visual: "circuit",
     icon: "factory",
+  },
+  {
+    slug: "energy-utilities",
+    label: "Energy & Utilities",
+    title: "Energy & Utilities",
+    summary:
+      "Distributed sites, remote assets and infrastructure that cannot simply be taken offline.",
+    intro: [
+      "Utility environments are geographically spread and operationally continuous. Sites are often unstaffed, links are long, and the consequences of losing visibility of an asset are measured in service rather than inconvenience.",
+      "We design resilient wide-area connectivity, bring remote sites under central monitoring, and put strict, auditable control around the remote access that operations depends on.",
+    ],
+    highlights: [
+      {
+        title: "Resilient WAN",
+        body: "Diverse paths to remote sites, with failover proven rather than assumed.",
+        icon: "network",
+      },
+      {
+        title: "Governed remote access",
+        body: "Access to remote assets brokered, recorded and time-bound.",
+        icon: "lock",
+      },
+      {
+        title: "Central visibility",
+        body: "Distributed sites monitored from one place, with alerting that reaches someone.",
+        icon: "monitor",
+      },
+    ],
+    capabilities: [
+      "Wide-area and multi-site network architecture",
+      "Remote site infrastructure and connectivity",
+      "Secure remote and privileged access",
+      "SCADA-adjacent network segmentation",
+      "Centralised monitoring and alerting",
+      "Managed services for distributed estates",
+    ],
+    visual: "topology",
+    icon: "power",
+  },
+  {
+    slug: "education",
+    label: "Education",
+    title: "Education",
+    summary:
+      "Campus networks, identity and applications sized for concentrated term-time demand.",
+    intro: [
+      "Campus infrastructure has a distinctive demand curve — long quiet periods punctuated by dense peaks when an entire cohort connects at once. Design for the average and it fails in the first week of term.",
+      "We size wireless and switching for peak concurrency, separate academic, administrative and guest traffic, and integrate identity so staff and students carry one account across a mixed application estate.",
+    ],
+    highlights: [
+      {
+        title: "Peak-sized",
+        body: "Access point density and capacity planned for concurrent term-time load.",
+        icon: "bolt",
+      },
+      {
+        title: "One identity",
+        body: "Single sign-on across academic and administrative systems.",
+        icon: "identity",
+      },
+      {
+        title: "Traffic separated",
+        body: "Academic, administrative, hostel and guest networks kept apart by design.",
+        icon: "network",
+      },
+    ],
+    capabilities: [
+      "Campus network and wireless architecture",
+      "Identity and single sign-on integration",
+      "Academic application and platform integration",
+      "Lab and classroom infrastructure",
+      "Storage and backup for institutional data",
+      "Managed services across multiple buildings",
+    ],
+    visual: "topology",
+    icon: "education",
   },
   {
     slug: "it-ites",
     label: "IT & ITES",
     title: "IT & ITES",
     summary:
-      "Dense compute, delivery-floor infrastructure and platforms that scale with headcount.",
+      "Repeatable platform patterns that absorb growth without a redesign each time.",
     intro: [
-      "Service delivery organisations grow in steps — a new client, a new floor, a new shift — and infrastructure has to absorb that without a redesign each time. Density and repeatability matter more than any single specification.",
-      "We build standardised, repeatable floor and rack configurations, size for growth in defined increments, and keep the network resilient enough that a delivery floor never sits idle.",
+      "Service delivery organisations grow in steps — a new client, a new floor, a new shift — and infrastructure has to absorb that without being rebuilt. Repeatability matters more than any single specification.",
+      "We build standardised, automatable platform and network patterns, size for growth in defined increments, and keep client environments properly separated from one another.",
     ],
     highlights: [
       {
-        title: "Repeatable builds",
-        body: "Standard rack and floor configurations that can be replicated as the business grows.",
+        title: "Repeatable patterns",
+        body: "Standard build definitions that can be replicated as the business grows.",
         icon: "layers",
       },
       {
-        title: "Growth in steps",
-        body: "Capacity planned in defined increments so expansion is additive, not disruptive.",
-        icon: "chart",
+        title: "Client separation",
+        body: "Environments segmented so one client's estate cannot reach another's.",
+        icon: "shield",
       },
       {
-        title: "Floor uptime",
-        body: "Redundant paths and rapid-response support so delivery floors keep working.",
-        icon: "support",
+        title: "Growth in steps",
+        body: "Capacity planned in increments so expansion is additive, not disruptive.",
+        icon: "chart",
       },
     ],
     capabilities: [
-      "High-density server and virtualization platforms",
-      "Delivery-floor network and cabling infrastructure",
-      "Redundant internet and WAN connectivity",
-      "Firewall, VPN and secure access for distributed teams",
-      "Storage and backup for client environments",
-      "Rapid-response support arrangements",
+      "High-density compute and virtualization platforms",
+      "Delivery-floor network and connectivity",
+      "Client environment segmentation",
+      "Secure remote access for distributed teams",
+      "Automated provisioning and configuration",
+      "Managed monitoring and rapid-response support",
     ],
     visual: "stack",
     icon: "code",
@@ -1015,10 +1065,10 @@ export const industryPages: DetailPage[] = [
     label: "Retail",
     title: "Retail",
     summary:
-      "Consistent store builds, centrally managed connectivity and infrastructure that scales by rollout.",
+      "Identical store builds, centrally managed connectivity and infrastructure that scales by rollout.",
     intro: [
       "Retail infrastructure is a repetition problem. What matters is that store number sixty is built exactly like store number one, can be supported remotely, and can be commissioned by a small team in a day.",
-      "We define a standard store build, pre-stage equipment to it, and manage connectivity and security centrally so each new site is a rollout rather than a project.",
+      "We define a standard store architecture, integrate point-of-sale and back-office systems with central platforms, and manage connectivity, security and monitoring centrally so each new site is a rollout rather than a project.",
     ],
     highlights: [
       {
@@ -1027,9 +1077,9 @@ export const industryPages: DetailPage[] = [
         icon: "retail",
       },
       {
-        title: "Pre-staged kit",
-        body: "Equipment configured before despatch so on-site commissioning is quick.",
-        icon: "chip",
+        title: "Integrated to head office",
+        body: "Store systems connected to central applications through a governed path.",
+        icon: "api",
       },
       {
         title: "Managed centrally",
@@ -1038,59 +1088,21 @@ export const industryPages: DetailPage[] = [
       },
     ],
     capabilities: [
-      "Standardised store network and hardware builds",
-      "Centrally managed firewalls and connectivity",
-      "Point-of-sale and back-office infrastructure",
-      "Wireless coverage for stores and warehouses",
-      "Central servers, storage and backup",
-      "Multi-site rollout and support contracts",
+      "Standardised store network and platform builds",
+      "Centrally managed connectivity and security",
+      "Point-of-sale and back-office integration",
+      "Store wireless and in-store systems",
+      "Central compute, storage and backup",
+      "Multi-site rollout and managed support",
     ],
     visual: "signal",
     icon: "retail",
-  },
-  {
-    slug: "data-centers",
-    label: "Data Centers",
-    title: "Data Centers",
-    summary:
-      "White-space build-out, structured cabling and capacity expansion for facility operators.",
-    intro: [
-      "Facility work is unforgiving about detail. Rack elevations, power paths, containment and cabling all have to be right before equipment lands, because correcting them afterwards means touching live infrastructure.",
-      "We plan and execute white-space build-out to a documented standard, and support ongoing expansion so growth follows the original design rather than working around it.",
-    ],
-    highlights: [
-      {
-        title: "Planned white space",
-        body: "Elevations, weight, power and airflow resolved before the first cabinet is placed.",
-        icon: "datacenter",
-      },
-      {
-        title: "Structured throughout",
-        body: "Cabling, containment and labelling executed to a single documented standard.",
-        icon: "cable",
-      },
-      {
-        title: "Built to expand",
-        body: "Expansion routes designed in, so the next phase extends the design rather than fighting it.",
-        icon: "chart",
-      },
-    ],
-    capabilities: [
-      "White-space layout and rack elevation planning",
-      "Cabinet, containment and cable tray installation",
-      "Power distribution and UPS integration",
-      "High-density structured cabling and testing",
-      "Top-of-rack and core switching deployment",
-      "Ongoing capacity expansion and support",
-    ],
-    visual: "datacenter",
-    icon: "datacenter",
   },
 ];
 
 export const catalog: Record<CatalogSection, DetailPage[]> = {
   solutions,
-  products,
+  technology,
   services,
   industries: industryPages,
 };

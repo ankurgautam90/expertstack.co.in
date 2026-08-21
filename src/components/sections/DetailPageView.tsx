@@ -26,7 +26,13 @@ export function DetailPageView({
   siblings: DetailPage[];
 }) {
   const meta = sectionMeta[section];
-  const sectionHref = `/#${section === "industries" ? "industries" : "categories"}`;
+  const anchors: Record<CatalogSection, string> = {
+    solutions: "/#solutions",
+    technology: "/#technology",
+    services: "/#process",
+    industries: "/#industries",
+  };
+  const sectionHref = anchors[section];
 
   return (
     <>
@@ -60,8 +66,8 @@ export function DetailPageView({
                 {page.summary}
               </p>
               <div className="mt-9 flex flex-wrap gap-3">
-                <ButtonLink href="/#contact" size="lg" withArrow>
-                  Request a Quote
+                <ButtonLink href="/contact" size="lg" withArrow>
+                  Talk to an Expert
                 </ButtonLink>
                 <ButtonLink href="/#process" variant="onDark" size="lg">
                   How we deliver
@@ -134,11 +140,11 @@ export function DetailPageView({
 
               <div className="mt-7 border-t border-navy-200/70 pt-6">
                 <p className="text-[0.875rem] leading-relaxed text-ink-muted">
-                  Send us the requirement and we will come back with a configuration,
-                  or with the questions we need answered first.
+                  Tell us what the business needs to achieve and we will come back
+                  with an approach — or with the questions we need answered first.
                 </p>
-                <ButtonLink href="/#contact" size="md" className="mt-5 w-full" withArrow>
-                  Request a Quote
+                <ButtonLink href="/contact" size="md" className="mt-5 w-full" withArrow>
+                  Talk to an Expert
                 </ButtonLink>
               </div>
             </div>

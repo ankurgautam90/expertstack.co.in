@@ -4,40 +4,42 @@ import { Reveal } from "@/components/ui/Reveal";
 import { PatternVisual } from "@/components/visuals/PatternVisual";
 
 const PILLARS = [
-  { icon: "server" as const, label: "Compute" },
-  { icon: "network" as const, label: "Networking" },
-  { icon: "shield" as const, label: "Security" },
-  { icon: "storage" as const, label: "Storage" },
-  { icon: "datacenter" as const, label: "Data Center" },
-  { icon: "support" as const, label: "Support" },
+  { icon: "eye" as const, label: "Consulting" },
+  { icon: "blueprint" as const, label: "Architecture" },
+  { icon: "workflow" as const, label: "Integration" },
+  { icon: "layers" as const, label: "Implementation" },
+  { icon: "shield" as const, label: "Cybersecurity" },
+  { icon: "cloud" as const, label: "Cloud" },
+  { icon: "server" as const, label: "Infrastructure" },
+  { icon: "monitor" as const, label: "Managed Services" },
 ];
 
 export function AboutSection() {
   return (
-    <section className="bg-white py-20 lg:py-28">
+    <section id="about" className="bg-surface-muted py-20 lg:py-28">
       <div className="container grid items-center gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.85fr)] lg:gap-20">
         <div>
           <Reveal>
             <p className="eyebrow">About us</p>
             <h2 className="mt-5 text-3xl font-bold sm:text-4xl lg:text-[2.75rem] lg:leading-[1.1]">
-              Your Trusted IT Infrastructure Partner
+              Your Technology Integration Partner
             </h2>
             <div className="mt-6 space-y-5 text-base leading-relaxed text-ink-muted sm:text-lg">
               <p>
-                We provide enterprise IT infrastructure and technology solutions
-                covering compute, networking, security, storage and data center
-                infrastructure.
+                We are a technology solutions and systems integration company helping
+                organizations design, integrate, implement and manage modern IT
+                environments.
               </p>
               <p>
-                Our focus is to help organizations build reliable, secure and scalable
-                technology environments — designed against how the business actually
-                operates, then supported after handover rather than left to drift.
+                We start from the business requirement rather than a product line, stay
+                independent of any single platform, and remain accountable for the
+                environment long after it goes live.
               </p>
             </div>
           </Reveal>
 
           <Reveal delay={100}>
-            <ul className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3">
+            <ul className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4">
               {PILLARS.map((pillar) => (
                 <li
                   key={pillar.label}
@@ -73,8 +75,8 @@ export function AboutSection() {
               How we work
             </p>
             <p className="mt-2.5 text-[0.9375rem] leading-relaxed text-navy-800">
-              Assess first, design against evidence, supply through authorised channels,
-              deploy to a documented plan, and stay accountable for the result.
+              Understand the requirement, design the architecture, integrate the
+              platforms, secure every layer — then operate and improve it.
             </p>
           </div>
         </Reveal>

@@ -10,30 +10,37 @@ export function ProcessSection() {
       <div className="container">
         <SectionHeading
           eyebrow="Services"
-          title="From Design to Deployment"
-          description="A single accountable team across the whole engagement. The engineers who scope the environment are the ones who rack it, configure it and pick up the phone afterwards."
+          title="From Strategy to Operations"
+          description="One accountable team across the whole lifecycle. The engineers who understand the requirement design the architecture, integrate it, implement it — and stay on to run it."
           action={
-            <ButtonLink href="/services/it-infrastructure" variant="secondary" size="md" withArrow>
+            <ButtonLink href="/services/consulting" variant="secondary" size="md" withArrow>
               All services
             </ButtonLink>
           }
         />
 
         <div className="relative mt-14">
-          {/* Track connecting the six steps on wide screens */}
+          {/* Track connecting the steps on wide screens */}
           <span
             aria-hidden="true"
             className="absolute left-0 right-0 top-[3.25rem] hidden h-px bg-gradient-to-r from-transparent via-navy-200 to-transparent lg:block"
           />
 
-          <div className="relative grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="relative grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {processSteps.map((step, index) => (
-              <Reveal key={step.number} delay={(index % 3) * 80}>
+              <Reveal key={step.number} delay={(index % 4) * 80}>
                 <ServiceCard step={step} />
               </Reveal>
             ))}
           </div>
         </div>
+
+        <Reveal delay={120}>
+          <p className="mt-10 text-center text-[0.9375rem] text-ink-muted">
+            Steps 06 and 07 are the ones most projects leave out — and the reason
+            environments drift away from the design they started with.
+          </p>
+        </Reveal>
       </div>
     </section>
   );

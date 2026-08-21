@@ -39,12 +39,12 @@ export function ContactSection() {
           <Reveal>
             <p className="eyebrow">Contact</p>
             <h2 className="mt-5 text-3xl font-bold sm:text-4xl lg:text-[2.5rem] lg:leading-[1.12]">
-              Send us your requirement
+              Discuss Your Requirement
             </h2>
             <p className="mt-5 leading-relaxed text-ink-muted">
-              Tell us what you are trying to build or fix. If the requirement is clear
-              we will come back with a configuration and pricing; if it needs scoping,
-              we will come back with questions rather than assumptions.
+              Start with the business problem rather than a product list. If the
+              requirement is already clear we will come back with an approach; if it
+              needs scoping, we will come back with questions rather than assumptions.
             </p>
           </Reveal>
 
@@ -73,11 +73,12 @@ export function ContactSection() {
           <Reveal delay={160}>
             <div className="mt-10 rounded-xl border border-navy-200/70 bg-white p-6">
               <p className="text-[0.6875rem] font-semibold uppercase tracking-[0.16em] text-accent-600">
-                Already running an environment?
+                Not sure where to start?
               </p>
               <p className="mt-2.5 text-[0.9375rem] leading-relaxed text-navy-800">
-                Ask for an infrastructure assessment. We document what you have, where
-                the risk sits and what it would cost to fix — before anything is quoted.
+                Ask for an assessment. We document the current environment, where the
+                risk and constraints sit, and what it would take to fix — before any
+                technology is proposed.
               </p>
             </div>
           </Reveal>

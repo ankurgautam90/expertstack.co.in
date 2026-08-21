@@ -7,7 +7,7 @@ import { PageBanner } from "@/components/sections/PageBanner";
 export const metadata: Metadata = {
   title: "Why Choose Us",
   description:
-    "Enterprise expertise, reliable technology, end-to-end delivery and contracted support — how we work, stated plainly.",
+    "Requirement-first consulting, architecture-led design, integration expertise and accountability after go-live — how we work, stated plainly.",
 };
 
 export default function WhyChooseUsPage() {
@@ -15,8 +15,8 @@ export default function WhyChooseUsPage() {
     <>
       <PageBanner
         eyebrow="Why choose us"
-        title="How we are different to a box supplier"
-        description="Anyone can quote hardware. The value is in specifying it correctly, deploying it properly and being accountable for it afterwards."
+        title="How we differ from a box supplier"
+        description="Anyone can quote technology. The value is in understanding the requirement, designing an architecture that fits it, integrating the pieces so they work as one, and staying accountable afterwards."
         crumbs={[
           { label: "Home", href: "/" },
           { label: "Company" },
