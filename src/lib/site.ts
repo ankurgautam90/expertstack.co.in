@@ -1,7 +1,7 @@
 /**
  * Single source of truth for brand-level strings.
- * Rename the company, change the phone number or swap the address here and the
- * whole site follows — nothing else hard-codes these values.
+ * Rename the company or change the contact details here and the whole site
+ * follows — nothing else hard-codes these values.
  */
 export const site = {
   name: "Expertstack",
@@ -13,14 +13,6 @@ export const site = {
   contact: {
     email: "sales@expertstack.co.in",
     supportEmail: "support@expertstack.co.in",
-    address: {
-      line1: "Corporate Office",
-      line2: "Business District",
-      city: "City",
-      region: "State",
-      postalCode: "000000",
-      country: "India",
-    },
     hours: "Monday – Saturday, 09:30 – 18:30",
   },
   social: [

@@ -10,15 +10,6 @@ const DETAILS = [
     lines: [site.contact.email, site.contact.supportEmail],
   },
   {
-    icon: "location" as const,
-    label: "Office",
-    lines: [
-      site.contact.address.line1,
-      site.contact.address.line2,
-      `${site.contact.address.city}, ${site.contact.address.region} ${site.contact.address.postalCode}`,
-    ],
-  },
-  {
     icon: "clock" as const,
     label: "Hours",
     lines: [site.contact.hours],

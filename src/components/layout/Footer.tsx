@@ -6,7 +6,7 @@ import { footerColumns } from "@/lib/navigation";
 import { legalLinks, site } from "@/lib/site";
 
 export function Footer() {
-  const { contact, address } = { contact: site.contact, address: site.contact.address };
+  const contact = site.contact;
 
   return (
     <footer className="relative overflow-hidden bg-navy-950 text-navy-200">
@@ -25,9 +25,9 @@ export function Footer() {
           <div>
             <Logo tone="light" showTagline />
             <p className="mt-6 max-w-md text-[0.9375rem] leading-relaxed text-navy-300">
-              We design, supply, deploy and support enterprise IT infrastructure —
-              compute, networking, security, storage and data center environments
-              built to run reliably at scale.
+              We help organizations design, integrate, implement and manage modern
+              technology environments — bringing together software, cloud,
+              infrastructure, networking and cybersecurity.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <ButtonLink href="/contact" size="md" withArrow>
@@ -40,21 +40,6 @@ export function Footer() {
           </div>
 
           <dl className="grid gap-6 sm:grid-cols-2 lg:pt-2">
-            <div className="flex gap-3">
-              <Icon name="location" size={18} className="mt-0.5 shrink-0 text-accent-400" />
-              <div>
-                <dt className="text-[0.6875rem] font-semibold uppercase tracking-[0.16em] text-navy-400">
-                  Office
-                </dt>
-                <dd className="mt-1.5 text-sm leading-relaxed text-navy-200">
-                  {address.line1}
-                  <br />
-                  {address.line2}
-                  <br />
-                  {address.city}, {address.region} {address.postalCode}
-                </dd>
-              </div>
-            </div>
             <div className="flex gap-3">
               <Icon name="mail" size={18} className="mt-0.5 shrink-0 text-accent-400" />
               <div>
