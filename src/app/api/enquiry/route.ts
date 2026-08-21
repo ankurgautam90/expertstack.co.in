@@ -12,7 +12,6 @@ type Enquiry = {
   fullName: string;
   company: string;
   email: string;
-  phone: string;
   industry?: string;
   requirement: string;
   message: string;
@@ -22,7 +21,6 @@ const REQUIRED: (keyof Enquiry)[] = [
   "fullName",
   "company",
   "email",
-  "phone",
   "requirement",
   "message",
 ];
@@ -48,7 +46,6 @@ export async function POST(request: Request) {
     fullName: sanitise(body.fullName),
     company: sanitise(body.company),
     email: sanitise(body.email),
-    phone: sanitise(body.phone),
     industry: sanitise(body.industry),
     requirement: sanitise(body.requirement),
     message: sanitise(body.message),

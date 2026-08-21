@@ -60,8 +60,8 @@ export function Hero() {
 
           <Reveal delay={160}>
             <p className="mt-7 max-w-xl text-base leading-relaxed text-navy-200 sm:text-lg">
-              We design, integrate and manage secure technology solutions that connect
-              applications, infrastructure, cloud and business operations.
+              We design, integrate and manage technology solutions that help
+              organizations build secure, scalable and efficient IT environments.
             </p>
           </Reveal>
 
@@ -70,7 +70,7 @@ export function Hero() {
               <ButtonLink href="/contact" size="lg" withArrow>
                 Talk to an Expert
               </ButtonLink>
-              <ButtonLink href="/#solutions" variant="onDark" size="lg">
+              <ButtonLink href="/solutions" variant="onDark" size="lg">
                 Explore Solutions
               </ButtonLink>
             </div>

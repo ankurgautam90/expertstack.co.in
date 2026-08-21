@@ -101,13 +101,6 @@ export function Navbar() {
           </p>
           <div className="flex items-center gap-6">
             <a
-              href={site.contact.phoneHref}
-              className="flex items-center gap-1.5 transition-colors hover:text-white"
-            >
-              <Icon name="phone" size={13} />
-              {site.contact.phone}
-            </a>
-            <a
               href={`mailto:${site.contact.email}`}
               className="flex items-center gap-1.5 transition-colors hover:text-white"
             >
@@ -128,7 +121,7 @@ export function Navbar() {
       <div className="container flex h-[var(--header-height)] items-center justify-between gap-6">
         <Logo />
 
-        <nav className="hidden lg:block" aria-label="Primary">
+        <nav className="hidden xl:block" aria-label="Primary">
           <ul className="flex items-center">
             {navigation.map((item) => {
               const isOpen = openMenu === item.label;
@@ -145,7 +138,7 @@ export function Navbar() {
                     aria-expanded={item.menu ? isOpen : undefined}
                     onFocus={() => setOpenMenu(item.menu ? item.label : null)}
                     className={cn(
-                      "relative flex h-[var(--header-height)] items-center gap-1.5 px-4 text-[0.9375rem] font-semibold transition-colors duration-200",
+                      "relative flex h-[var(--header-height)] items-center gap-1.5 px-3 text-[0.875rem] font-semibold transition-colors duration-200 2xl:px-4 2xl:text-[0.9375rem]",
                       isOpen ? "text-accent-700" : "text-navy-800 hover:text-accent-700",
                     )}
                   >
@@ -191,7 +184,7 @@ export function Navbar() {
           <ButtonLink
             href="/contact"
             size="md"
-            className="hidden sm:inline-flex"
+            className="hidden shrink-0 sm:inline-flex"
             withArrow
           >
             Talk to an Expert
@@ -205,7 +198,7 @@ export function Navbar() {
             }}
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
-            className="grid h-10 w-10 place-items-center rounded-md text-navy-900 transition-colors hover:bg-surface-muted lg:hidden"
+            className="grid h-10 w-10 place-items-center rounded-md text-navy-900 transition-colors hover:bg-surface-muted xl:hidden"
           >
             <Icon name={mobileOpen ? "close" : "menu"} size={22} />
           </button>
@@ -215,7 +208,7 @@ export function Navbar() {
       {/* Desktop panels */}
       {activeItem?.menu && !searchOpen ? (
         <div
-          className="absolute inset-x-0 top-full hidden lg:block"
+          className="absolute inset-x-0 top-full hidden xl:block"
           onMouseEnter={cancelClose}
         >
           <MegaMenu item={activeItem} onNavigate={closeAll} />

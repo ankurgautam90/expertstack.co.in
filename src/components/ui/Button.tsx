@@ -7,7 +7,7 @@ type Variant = "primary" | "secondary" | "onDark" | "ghost" | "quiet";
 type Size = "sm" | "md" | "lg";
 
 const base =
-  "group inline-flex items-center justify-center gap-2 rounded-md font-semibold transition-all duration-300 ease-enterprise disabled:cursor-not-allowed disabled:opacity-60";
+  "group inline-flex shrink-0 whitespace-nowrap items-center justify-center gap-2 rounded-md font-semibold transition-all duration-300 ease-enterprise disabled:cursor-not-allowed disabled:opacity-60";
 
 const variants: Record<Variant, string> = {
   primary:

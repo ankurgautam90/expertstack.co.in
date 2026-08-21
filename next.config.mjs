@@ -38,6 +38,12 @@ const nextConfig = {
 
       // Retired industry
       { source: "/industries/data-centers", destination: "/industries/energy-utilities", permanent: true },
+
+      // Company pages promoted to top-level routes in the multi-page rebuild
+      { source: "/company/about-us", destination: "/about", permanent: true },
+      { source: "/company/why-choose-us", destination: "/about", permanent: true },
+      { source: "/company/case-studies", destination: "/case-studies", permanent: true },
+      { source: "/company/partners", destination: "/technology", permanent: true },
     ];
   },
 };

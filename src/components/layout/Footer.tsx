@@ -33,9 +33,8 @@ export function Footer() {
               <ButtonLink href="/contact" size="md" withArrow>
                 Talk to an Expert
               </ButtonLink>
-              <ButtonLink href={contact.phoneHref} variant="onDark" size="md">
-                <Icon name="phone" size={16} />
-                Talk to an Expert
+              <ButtonLink href="/about" variant="onDark" size="md">
+                About us
               </ButtonLink>
             </div>
           </div>
@@ -74,22 +73,6 @@ export function Footer() {
                     className="block transition-colors hover:text-white"
                   >
                     {contact.supportEmail}
-                  </a>
-                </dd>
-              </div>
-            </div>
-            <div className="flex gap-3">
-              <Icon name="phone" size={18} className="mt-0.5 shrink-0 text-accent-400" />
-              <div>
-                <dt className="text-[0.6875rem] font-semibold uppercase tracking-[0.16em] text-navy-400">
-                  Phone
-                </dt>
-                <dd className="mt-1.5 text-sm text-navy-200">
-                  <a
-                    href={contact.phoneHref}
-                    className="transition-colors hover:text-white"
-                  >
-                    {contact.phone}
                   </a>
                 </dd>
               </div>

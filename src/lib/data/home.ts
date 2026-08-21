@@ -638,3 +638,155 @@ export const caseStudies: CaseStudy[] = [
     variant: "topology",
   },
 ];
+
+/* ---------------------------------------------------------------------------
+   15. What we do — the homepage's short answer.
+   -------------------------------------------------------------------------- */
+
+export const whatWeDo: { title: string; body: string; icon: IconName }[] = [
+  { title: "IT Solutions", body: "Technology designed around the business requirement, not a product line.", icon: "blueprint" },
+  { title: "Software Integration", body: "Applications, APIs and databases connected so data moves on its own.", icon: "api" },
+  { title: "Cloud", body: "Private, public and hybrid platforms with one consistent operating model.", icon: "cloud" },
+  { title: "Cybersecurity", body: "Identity, access, network and data controls designed as one architecture.", icon: "shield" },
+  { title: "Infrastructure", body: "Compute, network and storage built to be reliable and maintainable.", icon: "server" },
+  { title: "Managed Services", body: "Monitoring, operations and support that continue long after go-live.", icon: "monitor" },
+];
+
+/* ---------------------------------------------------------------------------
+   16. How we create value — the five-step chain.
+   -------------------------------------------------------------------------- */
+
+export const valueChain: { step: string; title: string; body: string; icon: IconName }[] = [
+  { step: "01", title: "Understand", body: "Start with the business requirement, the current estate and the constraints around both.", icon: "eye" },
+  { step: "02", title: "Design", body: "Produce a target architecture with technology choices justified and integration points named.", icon: "blueprint" },
+  { step: "03", title: "Integrate", body: "Connect applications, cloud, identity, network and infrastructure into one environment.", icon: "workflow" },
+  { step: "04", title: "Implement", body: "Build, configure, migrate and cut over to a plan with test evidence at each stage.", icon: "layers" },
+  { step: "05", title: "Manage", body: "Monitor, operate, secure and continuously improve what was delivered.", icon: "monitor" },
+];
+
+/* ---------------------------------------------------------------------------
+   17. The business value we provide.
+   -------------------------------------------------------------------------- */
+
+export const valuePillars: {
+  number: string;
+  title: string;
+  body: string;
+  points: string[];
+  icon: IconName;
+}[] = [
+  {
+    number: "01",
+    title: "Simplify Complex Technology",
+    body: "Organizations run many technologies bought at different times from different vendors. We integrate them into a single, manageable environment.",
+    points: ["One architecture", "One operating model", "One accountable team"],
+    icon: "workflow",
+  },
+  {
+    number: "02",
+    title: "Improve Security",
+    body: "Security designed across every layer rather than added per project, so there are no gaps between the controls.",
+    points: ["Identity & access", "Network & applications", "Infrastructure & data"],
+    icon: "shield",
+  },
+  {
+    number: "03",
+    title: "Improve Reliability",
+    body: "Environments designed to stay available under load, tolerate failure and remain maintainable as they grow.",
+    points: ["Stable", "Scalable", "Resilient", "Maintainable"],
+    icon: "gauge",
+  },
+  {
+    number: "04",
+    title: "Connect Systems",
+    body: "Applications, APIs, databases, cloud, infrastructure, security and IT operations joined so information flows without manual effort.",
+    points: ["Documented interfaces", "Automated data flow", "One source of truth"],
+    icon: "api",
+  },
+  {
+    number: "05",
+    title: "Reduce Operational Complexity",
+    body: "Centralised management, monitoring and automation so a smaller team can run a larger environment confidently.",
+    points: ["Automation", "Monitoring", "Managed services", "Technical support"],
+    icon: "monitor",
+  },
+  {
+    number: "06",
+    title: "Enable Business Growth",
+    body: "Technology that supports what the business is trying to do — scaling, modernising, securing and automating as requirements change.",
+    points: ["Scale", "Modernise", "Secure", "Automate"],
+    icon: "chart",
+  },
+];
+
+/* ---------------------------------------------------------------------------
+   18. Technology categories — what we integrate, framed as capability.
+   -------------------------------------------------------------------------- */
+
+export const techCategories: {
+  title: string;
+  body: string;
+  items: string[];
+  href: string;
+  icon: IconName;
+}[] = [
+  {
+    title: "Compute",
+    body: "Server platforms sized against real utilisation and integrated with virtualization and cloud.",
+    items: ["Rack Servers", "Virtualization", "GPU Infrastructure"],
+    href: "/technology/compute-infrastructure",
+    icon: "server",
+  },
+  {
+    title: "Networking",
+    body: "Connectivity between users, applications, cloud and data centers, with segmentation built in.",
+    items: ["Switching", "Routing", "Wireless", "SD-WAN"],
+    href: "/technology/network-infrastructure",
+    icon: "network",
+  },
+  {
+    title: "Security",
+    body: "Controls integrated with the systems they protect rather than bolted on afterwards.",
+    items: ["Firewalls", "IAM", "PAM", "MFA", "SIEM"],
+    href: "/technology/cybersecurity-architecture",
+    icon: "shield",
+  },
+  {
+    title: "Cloud",
+    body: "Platform choice driven by workload requirements, with a consistent way to operate both sides.",
+    items: ["Private Cloud", "Public Cloud", "Hybrid Cloud", "Cloud Migration"],
+    href: "/technology/virtualization-cloud",
+    icon: "cloud",
+  },
+  {
+    title: "Data",
+    body: "Storage and protection designed backwards from the recovery objectives the business needs.",
+    items: ["Storage", "Backup", "Database", "Disaster Recovery"],
+    href: "/technology/data-storage-platforms",
+    icon: "storage",
+  },
+  {
+    title: "Software",
+    body: "The application and integration layer that makes the rest of the estate useful.",
+    items: ["Enterprise Applications", "APIs", "Middleware", "ITSM", "Automation"],
+    href: "/solutions/application-integration",
+    icon: "apps",
+  },
+];
+
+/* ---------------------------------------------------------------------------
+   19. Service catalogue listed on /services.
+   -------------------------------------------------------------------------- */
+
+export const serviceList: { label: string; href: string; icon: IconName }[] = [
+  { label: "IT Consulting", href: "/services/consulting", icon: "eye" },
+  { label: "Solution Architecture", href: "/services/architecture", icon: "blueprint" },
+  { label: "Software Integration", href: "/solutions/application-integration", icon: "api" },
+  { label: "Infrastructure Integration", href: "/services/integration", icon: "workflow" },
+  { label: "Cloud Implementation", href: "/solutions/cloud-infrastructure", icon: "cloud" },
+  { label: "Cybersecurity Implementation", href: "/services/security", icon: "shield" },
+  { label: "Network Implementation", href: "/solutions/enterprise-networking", icon: "network" },
+  { label: "Migration", href: "/services/implementation", icon: "migrate" },
+  { label: "Managed Services", href: "/services/managed-services", icon: "monitor" },
+  { label: "Technical Support", href: "/services/support", icon: "support" },
+];

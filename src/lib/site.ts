@@ -13,8 +13,6 @@ export const site = {
   contact: {
     email: "sales@expertstack.co.in",
     supportEmail: "support@expertstack.co.in",
-    phone: "+91 00000 00000",
-    phoneHref: "tel:+910000000000",
     address: {
       line1: "Corporate Office",
       line2: "Business District",

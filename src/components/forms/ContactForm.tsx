@@ -23,24 +23,10 @@ export const REQUIREMENTS = [
   "Other",
 ];
 
-export const INDUSTRIES = [
-  "Banking & Finance",
-  "Government & PSU",
-  "Healthcare",
-  "Manufacturing",
-  "Energy & Utilities",
-  "Education",
-  "IT & ITES",
-  "Retail",
-  "Other",
-];
-
 type Fields = {
   fullName: string;
   company: string;
   email: string;
-  phone: string;
-  industry: string;
   requirement: string;
   message: string;
 };
@@ -49,8 +35,6 @@ const EMPTY: Fields = {
   fullName: "",
   company: "",
   email: "",
-  phone: "",
-  industry: "",
   requirement: "",
   message: "",
 };
@@ -67,12 +51,6 @@ function validate(values: Fields) {
     errors.email = "Please enter a business email.";
   } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(values.email.trim())) {
     errors.email = "That email address does not look right.";
-  }
-
-  if (!values.phone.trim()) {
-    errors.phone = "Please enter a phone number.";
-  } else if (values.phone.replace(/\D/g, "").length < 8) {
-    errors.phone = "Please enter a complete phone number.";
   }
 
   if (!values.requirement) errors.requirement = "Please select a requirement.";
@@ -190,28 +168,6 @@ export function ContactForm() {
           autoComplete="email"
           required
         />
-        <Field
-          label="Phone"
-          name="phone"
-          type="tel"
-          value={values.phone}
-          onChange={update("phone")}
-          error={errors.phone}
-          placeholder="+91 00000 00000"
-          autoComplete="tel"
-          required
-        />
-
-        <SelectField
-          label="Industry"
-          name="industry"
-          value={values.industry}
-          onChange={update("industry")}
-          error={errors.industry}
-          placeholder="Select Industry"
-          options={INDUSTRIES}
-        />
-
         <SelectField
           label="Requirement"
           name="requirement"

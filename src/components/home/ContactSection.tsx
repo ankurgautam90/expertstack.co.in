@@ -10,11 +10,6 @@ const DETAILS = [
     lines: [site.contact.email, site.contact.supportEmail],
   },
   {
-    icon: "phone" as const,
-    label: "Phone",
-    lines: [site.contact.phone],
-  },
-  {
     icon: "location" as const,
     label: "Office",
     lines: [

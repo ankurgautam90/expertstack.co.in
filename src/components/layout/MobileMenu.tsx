@@ -16,7 +16,7 @@ export function MobileMenu({ onClose }: { onClose: () => void }) {
   const [open, setOpen] = useState<string | null>("Solutions");
 
   return (
-    <div className="fixed inset-x-0 bottom-0 top-[var(--header-height)] z-40 overflow-y-auto overscroll-contain bg-white lg:hidden">
+    <div className="fixed inset-x-0 bottom-0 top-[var(--header-height)] z-40 overflow-y-auto overscroll-contain bg-white xl:hidden">
       <nav className="container py-6" aria-label="Mobile">
         <ul className="divide-y divide-navy-100 border-y border-navy-100">
           {navigation.map((item) => {
@@ -112,14 +112,13 @@ export function MobileMenu({ onClose }: { onClose: () => void }) {
             Talk to an Expert
           </ButtonLink>
           <ButtonLink
-            href={site.contact.phoneHref}
+            href="/solutions"
             variant="secondary"
             size="lg"
             className="w-full"
             onClick={onClose}
           >
-            <Icon name="phone" size={17} />
-            {site.contact.phone}
+            Explore Solutions
           </ButtonLink>
         </div>
 

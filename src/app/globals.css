@@ -16,6 +16,18 @@
     /* Anchor targets clear the sticky header. */
     scroll-padding-top: calc(var(--header-height) + 24px);
     -webkit-text-size-adjust: 100%;
+
+    /* Hide the page scrollbar chrome only. Scrolling itself is untouched:
+       wheel, trackpad, touch, keyboard and scrollbar-less overlay all still
+       work. Deliberately scoped to <html> so nested scroll containers — the
+       mobile drawer, search results, overflow-x tables — keep their own
+       scrollbars and remain usable. */
+    scrollbar-width: none;      /* Firefox */
+    -ms-overflow-style: none;   /* legacy Edge/IE */
+  }
+
+  html::-webkit-scrollbar {
+    display: none;              /* Chrome, Safari, Edge */
   }
 
   body {

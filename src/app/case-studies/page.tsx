@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 import { FinalCTA } from "@/components/home/FinalCTA";
 import { Icon } from "@/components/icons/Icon";
+import { DetailVisual } from "@/components/sections/DetailVisual";
 import { PageBanner } from "@/components/sections/PageBanner";
 import { Reveal } from "@/components/ui/Reveal";
-import { DetailVisual } from "@/components/sections/DetailVisual";
 import { caseStudies } from "@/lib/data/home";
 
 export const metadata: Metadata = {
   title: "Case Studies",
   description:
-    "Representative integration engagements — the business challenge, the solution designed and the outcome delivered.",
+    "Representative integration engagements — the business challenge, the architecture integrated, and the outcome delivered.",
 };
 
 const ROWS = [
@@ -23,13 +23,9 @@ export default function CaseStudiesPage() {
     <>
       <PageBanner
         eyebrow="Case studies"
-        title="Built for real-world business challenges"
+        title="Built for Real-World Business Challenges"
         description="Representative engagements, described by the problem the business had, the architecture we integrated and what changed as a result. Client names are withheld unless we have permission to publish them."
-        crumbs={[
-          { label: "Home", href: "/" },
-          { label: "Company" },
-          { label: "Case Studies" },
-        ]}
+        crumbs={[{ label: "Home", href: "/" }, { label: "Case Studies" }]}
       />
 
       <section className="bg-white py-20 lg:py-24">
@@ -63,9 +59,7 @@ export default function CaseStudiesPage() {
                     <h2 className="font-display text-2xl font-bold text-navy-900">
                       {study.title}
                     </h2>
-                    <p className="mt-2 text-[0.9375rem] text-ink-soft">
-                      {study.summary}
-                    </p>
+                    <p className="mt-2 text-[0.9375rem] text-ink-soft">{study.summary}</p>
 
                     <dl className="mt-8 space-y-6">
                       {ROWS.map((row) => (
@@ -82,9 +76,9 @@ export default function CaseStudiesPage() {
 
                     <p className="mt-8 flex items-start gap-2 rounded-lg bg-surface-muted px-4 py-3 text-[0.8125rem] leading-relaxed text-ink-soft">
                       <Icon name="check" size={16} className="mt-0.5 shrink-0 text-accent-600" />
-                      Engagement details are described in general terms. We can walk
-                      through the specifics, including the architecture and the
-                      integration approach, on a call.
+                      Engagement details are described in general terms. We can walk through
+                      the specifics, including the architecture and the integration approach,
+                      on a call.
                     </p>
                   </div>
                 </div>
